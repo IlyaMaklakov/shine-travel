@@ -1,0 +1,44 @@
+﻿@model List<ShineMvc.Models.VideoPlayListItem>
+<h3>Все видео</h3>
+@foreach (var videoSettingsItem in Model)
+{
+    <div class="row clearfix">
+        <div class="col-md-5 col-sm-2  col-xs-3 play-div">
+            @if (videoSettingsItem.IsUnlocked)
+            {
+                <div class="play">
+                    <img src="/assets/img/play.png" alt="">
+
+                </div>
+                <img src="@videoSettingsItem.UnLockedThumbnailUrl" alt="@videoSettingsItem.Title" class="img">
+
+            }
+            else
+            {
+                <div class="lock">
+                    <img src="/assets/img/lock.png" alt="">
+                </div>
+                <img src="@videoSettingsItem.LockedThumbnailUrl" alt="@videoSettingsItem.Title" class="img">
+
+            }
+
+        </div>
+        <div class="col-md-7 col-sm-10 col-xs-9 text">
+            <div>
+                @if (videoSettingsItem.IsUnlocked)
+                {
+                    <a href="/@videoSettingsItem.Version/@videoSettingsItem.Id">
+                        @videoSettingsItem.Title
+                    </a>
+                }
+                else
+                {
+                    <a href="#" onclick="return false;">
+                        @videoSettingsItem.Title
+                    </a>
+                }
+            </div>
+            @videoSettingsItem.ShortDescription
+        </div>
+    </div>
+}

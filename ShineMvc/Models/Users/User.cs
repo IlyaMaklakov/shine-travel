@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿#region Usings
+
+using System;
+
+#endregion
 
 namespace ShineMvc.Models.Users
 {
     public class User
     {
-        public int Id { get; set; }
-
         public DateTime FirstOpenDate { get; set; }
+
+        public int Id { get; set; }
     }
 }

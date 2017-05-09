@@ -1,9 +1,12 @@
-﻿using System.Web;
+﻿#region Usings
+
 using System.Web.Mvc;
+
+#endregion
 
 namespace ShineMvc
 {
-    public class FilterConfig
+    public static class FilterConfig
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
