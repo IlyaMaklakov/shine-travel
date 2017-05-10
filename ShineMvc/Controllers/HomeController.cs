@@ -7,6 +7,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 
+using Shine.Application.Video;
+using Shine.Core;
+using Shine.Core.Video;
+
 using ShineMvc.Models;
 using ShineMvc.Models.Users;
 
@@ -14,125 +18,155 @@ using ShineMvc.Models.Users;
 
 namespace ShineMvc.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : ShineBaseController
     {
-        private readonly string cookieId = "Shine";
+        private readonly IVideoService videoService;
 
-        private readonly string openDateCookieId = "openDate";
+        public HomeController()
+        {
+            this.videoService = new VideoService();
+        }
 
         public ActionResult Index()
         {
-            const string Version = "v1";
-            var videoList = this.GetVideoSettings(Version);
+            CurrentUser = this.GetCurrentUserInfo() ?? new User();
+
+            var filePath = this.GetVideoSettingsFilePath(ShineConsts.DefaultVideoSettingsVersion);
+            var videoList = this.videoService.GetVideoSettingsByVersion(filePath);
+
             var firstVideo = videoList.FirstOrDefault(v => v.Order == 1);
             if (firstVideo == null)
             {
                 throw new Exception("Video not found");
             }
 
-            var videoId = firstVideo.Id;
-            return this.RedirectToRoute("VideoRoute", new { version = Version, videoId });
+            return this.RedirectToRoute(
+                "VideoRoute",
+                new { version = ShineConsts.DefaultVideoSettingsVersion, friendlyUrl = firstVideo.FriendlyUrl });
         }
 
-        public ActionResult Video(string version, string videoId)
+        public ActionResult Video(string version, string friendlyUrl)
         {
-            this.ViewData["version"] = version;
-            var viewModel = this.GetVideoViewModel(videoId);
+            var viewModel = this.GetVideoViewModel(version, friendlyUrl);
+            this.UpdateUserInfoCookie();
             return this.View(viewModel);
-        }
-
-        private User CreateNewUser()
-        {
-            var user = new User { FirstOpenDate = DateTime.Now };
-
-            var cookie = new HttpCookie(this.cookieId)
-                             {
-                                 [this.openDateCookieId] =
-                                 user.FirstOpenDate.Ticks.ToString(),
-                                 Expires = DateTime.Now.AddYears(1)
-                             };
-
-            this.Response.Cookies.Add(cookie);
-            return user;
         }
 
         private User GetCurrentUserInfo()
         {
             User user = null;
-            var cookieReq = this.Request.Cookies[this.cookieId];
-            var openDate = cookieReq?[this.openDateCookieId];
-            if (!string.IsNullOrWhiteSpace(openDate))
+            var cookieReq = this.Request.Cookies[ShineConsts.CookieId];
+            var cookieValue = cookieReq?[ShineConsts.CurrentUserCookieId];
+            if (!string.IsNullOrWhiteSpace(cookieValue))
             {
-                user = new User { FirstOpenDate = new DateTime(Convert.ToInt64(openDate)) };
+                var currentUserJson = HttpUtility.UrlDecode(cookieValue);
+
+                if (!string.IsNullOrWhiteSpace(currentUserJson))
+                {
+                    var serializer = new JavaScriptSerializer();
+                    user = serializer.Deserialize<User>(currentUserJson);
+                }
             }
 
             return user;
         }
 
-        private User GetOrCreateUser()
-        {
-            var user = this.GetCurrentUserInfo() ?? this.CreateNewUser();
-            return user;
-        }
-
-        private List<VideoPlayListItem> GetPlayListViewModel(string version)
-        {
-            if (string.IsNullOrWhiteSpace(version))
-            {
-                version = "v1";
-            }
-            var videoSettingsViewModels = new List<VideoPlayListItem>();
-            var user = this.GetOrCreateUser();
-            var videSettingsFromFile = this.GetVideoSettings(version);
-            foreach (var videItem in videSettingsFromFile)
-            {
-                var newVideoViewModel =
-                    new VideoPlayListItem
-                        {
-                            Id = videItem.Id,
-                            LockedThumbnailUrl = videItem.LockedThumbnailUrl,
-                            UnLockedThumbnailUrl = videItem.UnLockedThumbnailUrl,
-                            Title = videItem.Title,
-                            IsUnlocked = videItem.IsUnlockedForDate(user.FirstOpenDate),
-                            ShortDescription = videItem.ShortDescription,
-                            Version = version
-                        };
-               
-
-                videoSettingsViewModels.Add(newVideoViewModel);
-            }
-
-            return videoSettingsViewModels;
-        }
-
-        private List<VideoSettings> GetVideoSettings(string version)
+        private string GetVideoSettingsFilePath(string version)
         {
             var file = $"~/App_Data/shine-config.{version}.json";
             var filePath = this.Server.MapPath(file);
-            var json = System.IO.File.ReadAllText(filePath);
-            var serializer = new JavaScriptSerializer();
-            var videoSettings = serializer.Deserialize<List<VideoSettings>>(json);
-            return videoSettings;
+            return filePath;
         }
 
-        private VideoViewModel GetVideoViewModel(string id)
+        private static int UpdateLastUnlockedVideoInfo(
+            IEnumerable<VideoSettings> videoSettingsList,
+            string version,
+            VideoSettings selectedVideo)
         {
-            var version = this.ViewData["version"] as string;
+            if (string.IsNullOrWhiteSpace(version) || selectedVideo == null)
+            {
+                throw new Exception("version or selectedVideo is null");
+            }
+
+            var maxOrder = 0;
+
+            if (CurrentUser.LastUnlockedVideosInfo.ContainsKey(version))
+            {
+                var lastUnlockedVideo =
+                    videoSettingsList.FirstOrDefault(
+                        v => string.Equals(v.Id, CurrentUser.LastUnlockedVideosInfo[version]));
+
+                if (lastUnlockedVideo != null)
+                {
+                    if (lastUnlockedVideo.Order < selectedVideo.Order)
+                    {
+                        maxOrder = selectedVideo.Order;
+                        CurrentUser.LastUnlockedVideosInfo[version] = selectedVideo.Id;
+                    }
+                    else
+                    {
+                        maxOrder = lastUnlockedVideo.Order;
+                    }
+                }
+            }
+            else
+            {
+                CurrentUser.LastUnlockedVideosInfo.Add(version, selectedVideo.Id);
+                maxOrder = selectedVideo.Order;
+            }
+
+            return maxOrder;
+        }
+
+        private List<VideoPlayListItem> GetPlayListViewModel(string version, int maxOrder)
+        {
             if (string.IsNullOrWhiteSpace(version))
             {
                 version = "v1";
             }
 
-            var user = this.GetOrCreateUser();
-            var videoList = this.GetVideoSettings(version);
-            var selectedVideo = string.IsNullOrWhiteSpace(id)
+            var filePath = this.GetVideoSettingsFilePath(version);
+            var videSettingsFromFile = this.videoService.GetVideoSettingsByVersion(filePath);
+
+            return videSettingsFromFile.Select(
+                videoItem => new VideoPlayListItem
+                                 {
+                                     Id = videoItem.Id,
+                                     LockedThumbnailUrl = videoItem.LockedThumbnailUrl,
+                                     UnLockedThumbnailUrl = videoItem.UnLockedThumbnailUrl,
+                                     Title = videoItem.Title,
+                                     ShortDescription = videoItem.ShortDescription,
+                                     Version = version,
+                                     FriendlyUrl = videoItem.FriendlyUrl,
+                                     IsUnlocked = maxOrder >= videoItem.Order
+                                 }).ToList();
+        }
+
+        private VideoViewModel GetVideoViewModel(string version, string friendlyUrl)
+        {
+            if (string.IsNullOrWhiteSpace(version))
+            {
+                version = "v1";
+            }
+
+            var user = CurrentUser;
+
+            var filePath = this.GetVideoSettingsFilePath(version);
+            var videoList = this.videoService.GetVideoSettingsByVersion(filePath);
+
+            var selectedVideo = string.IsNullOrWhiteSpace(friendlyUrl)
                                     ? videoList.FirstOrDefault(v => v.Order == 1)
-                                    : videoList.FirstOrDefault(v => string.Equals(v.Id, id));
-            
+                                    : videoList.FirstOrDefault(
+                                        v => string.Equals(
+                                            v.FriendlyUrl,
+                                            friendlyUrl,
+                                            StringComparison.InvariantCultureIgnoreCase));
+
             if (selectedVideo == null)
             {
                 throw new Exception("Video not found");
             }
+
             var videoViewModel = new VideoViewModel
                                      {
                                          CurrentUser = user,
@@ -141,10 +175,26 @@ namespace ShineMvc.Controllers
                                          VideoTitle = selectedVideo.Title,
                                          ShowBookingBlockAfter = selectedVideo.ShowBookingBlockAfter
                                      };
-            var playlist = this.GetPlayListViewModel(version);
+
+            var maxOrder = UpdateLastUnlockedVideoInfo(videoList, version, selectedVideo);
+
+            var playlist = this.GetPlayListViewModel(version, maxOrder);
 
             videoViewModel.VideoPlayList = playlist;
             return videoViewModel;
+        }
+
+        private void UpdateUserInfoCookie()
+        {
+            var cookie =
+                new HttpCookie(ShineConsts.CookieId)
+                    {
+                        [ShineConsts.CurrentUserCookieId] =
+                        new JavaScriptSerializer().Serialize(CurrentUser),
+                        Expires = DateTime.Now.AddYears(1)
+                    };
+
+            this.Response.Cookies.Add(cookie);
         }
     }
 }

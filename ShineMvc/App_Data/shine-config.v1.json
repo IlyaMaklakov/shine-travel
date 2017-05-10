@@ -1,6 +1,7 @@
 ﻿[
   {
-    "id": "video-1",
+    "id": 0,
+    "friendlyUrl": "storytelling",
     "order": 1,
     "title": "История Олега Шарпатого",
     "vimeoId": "158312457",
@@ -11,7 +12,8 @@
     "unlockAfter": ""
   },
   {
-    "id": "video-2",
+    "id": 1,
+    "friendlyUrl": "how-to-travel",
     "order": 2,
     "title": "Как правильно путешествовать",
     "vimeoId": "114466840",
@@ -22,7 +24,8 @@
     "unlockAfter": "2d"
   },
   {
-    "id": "video-3",
+    "id": 2,
+    "friendlyUrl": "travel-itinerary",
     "order": 3,
     "title": "Маршрут кругосветного путешествия",
     "vimeoId": "148716165",
@@ -33,7 +36,8 @@
     "unlockAfter": "4d"
   },
   {
-    "id": "video-4",
+    "id": 3,
+    "friendlyUrl": "60-days",
     "order": 4,
     "title": "Кругосветное путешествие за 60 дней",
     "vimeoId": "195995285",

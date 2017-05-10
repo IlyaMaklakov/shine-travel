@@ -17,7 +17,7 @@ namespace ShineMvc
 
             routes.MapRoute("ServerError", "ServerError", new { controller = "Error", action = "ServerError" });
 
-            routes.MapRoute("VideoRoute", "{version}/{videoId}", new { controller = "Home", action = "Video" });
+            routes.MapRoute("VideoRoute", "{version}/{friendlyUrl}", new { controller = "Home", action = "Video" });
 
             routes.MapRoute("Default", "{controller}/{action}", new { controller = "Home", action = "Index" });
         }

@@ -143,12 +143,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Error.cs" />
+    <Compile Include="Controllers\ShineBaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Users\User.cs" />
-    <Compile Include="Models\VideoSettings.cs" />
     <Compile Include="Models\VideoPlayListItem.cs" />
     <Compile Include="Models\VideoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -249,6 +249,20 @@
     <Content Include="Views\Shared\_ShineLayout.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Shared\ServerError.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shine.Application\Shine.Application.csproj">
+      <Project>{d2e14024-0288-4684-bbd8-dbf0f400e125}</Project>
+      <Name>Shine.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shine.Core\Shine.Core.csproj">
+      <Project>{D345638A-135E-4947-A0B7-003A94419633}</Project>
+      <Name>Shine.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shine.Framework\Shine.Framework.csproj">
+      <Project>{ACC85808-4C98-4804-A7B1-455956FAAAD5}</Project>
+      <Name>Shine.Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
