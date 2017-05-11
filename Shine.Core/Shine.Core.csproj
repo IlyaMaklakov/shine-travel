@@ -42,6 +42,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShineConsts.cs" />
+    <Compile Include="User\User.cs" />
+    <Compile Include="Video\VersionVideoSettings.cs" />
+    <Compile Include="Video\VideoPlayListItem.cs" />
     <Compile Include="Video\VideoSettings.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

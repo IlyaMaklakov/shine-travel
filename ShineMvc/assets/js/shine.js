@@ -2,7 +2,7 @@
     var player;
     var handleInit = function (videoVimeoId) {
         var options = {
-            id: videoVimeoId,
+            url: videoVimeoId,
             width: 640,
             loop: false,
             portrait: false,

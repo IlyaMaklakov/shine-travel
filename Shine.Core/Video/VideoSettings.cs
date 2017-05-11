@@ -28,7 +28,7 @@ namespace Shine.Core.Video
 
         public string UnLockedThumbnailUrl { get; set; }
 
-        public string VimeoId { get; set; }
+        public string VimeoUrl { get; set; }
 
         public bool IsUnlockedForDate(DateTime date)
         {

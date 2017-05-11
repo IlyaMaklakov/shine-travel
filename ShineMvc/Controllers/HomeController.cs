@@ -2,17 +2,16 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Script.Serialization;
+using System.Web.Routing;
 
 using Shine.Application.Video;
 using Shine.Core;
 using Shine.Core.Video;
 
 using ShineMvc.Models;
-using ShineMvc.Models.Users;
 
 #endregion
 
@@ -22,15 +21,58 @@ namespace ShineMvc.Controllers
     {
         private readonly IVideoService videoService;
 
+        protected static List<VersionVideoSettings> videoSettings;
+
+        protected const string VideoConfigsDirectory = "~/App_Data";
+
         public HomeController()
         {
             this.videoService = new VideoService();
         }
 
+        //protected override void Initialize(RequestContext requestContext)
+        //{
+        //    base.Initialize(requestContext);
+        //    videoSettings = GetAvailableVideoSettings();
+        //}
+
+
+        private List<VersionVideoSettings> GetAvailableVideoSettings()
+        {
+            var resultList = new List<VersionVideoSettings>();
+            var directory = this.Server.MapPath(VideoConfigsDirectory);
+            var fileNames = Directory.GetFiles(directory, "*.json", SearchOption.TopDirectoryOnly);
+            foreach (var fileName in fileNames)
+            {
+
+
+                var newVersionSettings =
+                    new VersionVideoSettings
+                    {
+                        VideoSettingsList =
+                                this.videoService.GetVideoSettingsByVersion(fileName)
+                    };
+
+                var configFileName = Path.GetFileNameWithoutExtension(fileName);
+                if (!string.IsNullOrWhiteSpace(configFileName))
+                {
+                    var parts = configFileName.Split('.');
+                    if (parts.Length >= 2)
+                    {
+                        newVersionSettings.Version = parts.LastOrDefault();
+                        resultList.Add(newVersionSettings);
+                    }
+
+                }
+
+
+            }
+
+            return resultList;
+        }
+
         public ActionResult Index()
         {
-            CurrentUser = this.GetCurrentUserInfo() ?? new User();
-
             var filePath = this.GetVideoSettingsFilePath(ShineConsts.DefaultVideoSettingsVersion);
             var videoList = this.videoService.GetVideoSettingsByVersion(filePath);
 
@@ -50,32 +92,6 @@ namespace ShineMvc.Controllers
             var viewModel = this.GetVideoViewModel(version, friendlyUrl);
             this.UpdateUserInfoCookie();
             return this.View(viewModel);
-        }
-
-        private User GetCurrentUserInfo()
-        {
-            User user = null;
-            var cookieReq = this.Request.Cookies[ShineConsts.CookieId];
-            var cookieValue = cookieReq?[ShineConsts.CurrentUserCookieId];
-            if (!string.IsNullOrWhiteSpace(cookieValue))
-            {
-                var currentUserJson = HttpUtility.UrlDecode(cookieValue);
-
-                if (!string.IsNullOrWhiteSpace(currentUserJson))
-                {
-                    var serializer = new JavaScriptSerializer();
-                    user = serializer.Deserialize<User>(currentUserJson);
-                }
-            }
-
-            return user;
-        }
-
-        private string GetVideoSettingsFilePath(string version)
-        {
-            var file = $"~/App_Data/shine-config.{version}.json";
-            var filePath = this.Server.MapPath(file);
-            return filePath;
         }
 
         private static int UpdateLastUnlockedVideoInfo(
@@ -130,16 +146,23 @@ namespace ShineMvc.Controllers
 
             return videSettingsFromFile.Select(
                 videoItem => new VideoPlayListItem
-                                 {
-                                     Id = videoItem.Id,
-                                     LockedThumbnailUrl = videoItem.LockedThumbnailUrl,
-                                     UnLockedThumbnailUrl = videoItem.UnLockedThumbnailUrl,
-                                     Title = videoItem.Title,
-                                     ShortDescription = videoItem.ShortDescription,
-                                     Version = version,
-                                     FriendlyUrl = videoItem.FriendlyUrl,
-                                     IsUnlocked = maxOrder >= videoItem.Order
-                                 }).ToList();
+                {
+                    Id = videoItem.Id,
+                    LockedThumbnailUrl = videoItem.LockedThumbnailUrl,
+                    UnLockedThumbnailUrl = videoItem.UnLockedThumbnailUrl,
+                    Title = videoItem.Title,
+                    ShortDescription = videoItem.ShortDescription,
+                    Version = version,
+                    FriendlyUrl = videoItem.FriendlyUrl,
+                    IsUnlocked = maxOrder >= videoItem.Order
+                }).ToList();
+        }
+
+        private string GetVideoSettingsFilePath(string version)
+        {
+            var file = $"~/App_Data/shine-config.{version}.json";
+            var filePath = this.Server.MapPath(file);
+            return filePath;
         }
 
         private VideoViewModel GetVideoViewModel(string version, string friendlyUrl)
@@ -168,13 +191,13 @@ namespace ShineMvc.Controllers
             }
 
             var videoViewModel = new VideoViewModel
-                                     {
-                                         CurrentUser = user,
-                                         VimeoId = selectedVideo.VimeoId,
-                                         VideoDescription = selectedVideo.Description,
-                                         VideoTitle = selectedVideo.Title,
-                                         ShowBookingBlockAfter = selectedVideo.ShowBookingBlockAfter
-                                     };
+            {
+                CurrentUser = user,
+                VimeoUrl = selectedVideo.VimeoUrl,
+                VideoDescription = selectedVideo.Description,
+                VideoTitle = selectedVideo.Title,
+                ShowBookingBlockAfter = selectedVideo.ShowBookingBlockAfter
+            };
 
             var maxOrder = UpdateLastUnlockedVideoInfo(videoList, version, selectedVideo);
 
@@ -182,19 +205,6 @@ namespace ShineMvc.Controllers
 
             videoViewModel.VideoPlayList = playlist;
             return videoViewModel;
-        }
-
-        private void UpdateUserInfoCookie()
-        {
-            var cookie =
-                new HttpCookie(ShineConsts.CookieId)
-                    {
-                        [ShineConsts.CurrentUserCookieId] =
-                        new JavaScriptSerializer().Serialize(CurrentUser),
-                        Expires = DateTime.Now.AddYears(1)
-                    };
-
-            this.Response.Cookies.Add(cookie);
         }
     }
 }

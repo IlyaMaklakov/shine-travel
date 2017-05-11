@@ -1,4 +1,4 @@
-﻿namespace ShineMvc.Models
+﻿namespace Shine.Core.Video
 {
     public class VideoPlayListItem
     {

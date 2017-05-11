@@ -2,7 +2,8 @@
 
 using System.Collections.Generic;
 
-using ShineMvc.Models.Users;
+using Shine.Core.User;
+using Shine.Core.Video;
 
 #endregion
 
@@ -18,7 +19,7 @@ namespace ShineMvc.Models
 
         public string VideoTitle { get; set; }
 
-        public string VimeoId { get; set; }
+        public string VimeoUrl { get; set; }
 
         public List<VideoPlayListItem> VideoPlayList { get; set; }
     }

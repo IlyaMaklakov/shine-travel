@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace ShineMvc.Models.Users
+namespace Shine.Core.User
 {
     public class User
     {
