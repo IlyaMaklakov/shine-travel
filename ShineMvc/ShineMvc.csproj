@@ -145,10 +145,12 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\ShineBaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\WelcomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\VideoViewModel.cs" />
+    <Compile Include="Models\WelcomeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +184,7 @@
     <Content Include="assets\img\one.jpg" />
     <Content Include="assets\img\play.png" />
     <Content Include="assets\img\pointer.png" />
+    <Content Include="assets\img\Preloader_2.gif" />
     <Content Include="assets\img\rus.png" />
     <Content Include="assets\img\thumbnails\1_locked.jpg" />
     <Content Include="assets\img\thumbnails\1_unlocked.jpg" />
@@ -194,10 +197,12 @@
     <Content Include="assets\img\travel.png" />
     <Content Include="assets\img\video.jpg" />
     <Content Include="assets\img\video2.jpg" />
+    <Content Include="assets\js\welcome.js" />
     <Content Include="assets\js\shine.js" />
     <Content Include="assets\js\videurls.js" />
     <Content Include="assets\vendors\jquery-1.12.0.min.js" />
     <Content Include="assets\vendors\bootstrap\bootstrap.css" />
+    <Content Include="assets\vendors\reqwest.js" />
     <Content Include="shine.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -236,6 +241,7 @@
   <ItemGroup>
     <Content Include="App_Data\shine-config.v1.json" />
     <Content Include="App_Data\shine-config.v2.json" />
+    <Content Include="assets\js\amocrm.rest-client.js" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\shine-travel - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\shine-travel - Web Deploy.pubxml" />
@@ -244,8 +250,13 @@
     <Content Include="Views\Shared\_ShineLayout.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Shared\ServerError.cshtml" />
+    <Content Include="Views\Welcome\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AmoCrm.Client\AmoCrm.Client.csproj">
+      <Project>{6E5C998C-0ED7-4D6B-98EE-B1FEE3503312}</Project>
+      <Name>AmoCrm.Client</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shine.Application\Shine.Application.csproj">
       <Project>{d2e14024-0288-4684-bbd8-dbf0f400e125}</Project>
       <Name>Shine.Application</Name>

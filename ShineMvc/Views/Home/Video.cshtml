@@ -2,37 +2,39 @@
 
 <div class="row clearfix">
     <div class="col-md-8 left left2">
-        <div class="video-block">
-            <div class="video">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <div class="embed-responsive-item" id="videoContainer"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="video-block">
+                    <div class="video">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <div class="embed-responsive-item" id="videoContainer"></div>
+                        </div>
+                    </div>
+
+                    <h1>@Model.VideoTitle</h1>
+                    @Model.VideoDescription
                 </div>
             </div>
-
-            <h1>@Model.VideoTitle</h1>
-            @Model.VideoDescription
         </div>
+
 
         @if (Model.ShowBookingBlockAfter.HasValue)
         {
-            <div class="booking-block">
-                <div class="blue" id="bookingBlock" style="display: none;">
-                    <div class="h2">
-                        Хочешь с нами в кругосветное <br>
-                        путешествие?
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="c-content-box c-size-sm" id="purchase-block">
+
+                        <div class="c-shop-banner-3">
+                            <h2 class="c-title c-font-bold c-font-white"> Хочешь с нами в кругосветное путешествие?</h2>
+                            <p class="c-desc c-font-16 c-font-white">37 мест уже забронировано</p>
+                        </div>
+                        <div class="purchase-btn-block">
+                            <button type="button" class="btn btn-lg c-btn-yellow c-btn-uppercase c-btn-bold">Забронировать место</button>
+                        </div>
                     </div>
 
-                    <div class="row clearfix">
-                        <div class="col-md-6">
-                            37 мест уже забронировано
-                        </div>
-                        <div class="col-md-6 button">
-                            <a href="" class="btn-default">Забронировать место</a>
-                        </div>
-                    </div>
                 </div>
             </div>
-
         }
     </div>
     <div class="col-md-4 right">
@@ -64,14 +66,14 @@
 
 
     <script type="text/javascript">
-        (function(w, d) {
-            w.amo_pixel_token = 'p1Ip4iB8yqaEyXU9HPmcTL5sQ0RYFMjQ5D+Kpr5QBxbyJAErqRr3fWC8LXHUkY9h';
-            var s = document.createElement('script'), f = d.getElementsByTagName('script')[0];
-            s.id = 'amo_pixel_js';
-            s.type = 'text/javascript';
-            s.async = true;
-            s.src = 'https://piper.amocrm.ru/pixel/js/tracker/pixel.js?token=' + w.amo_pixel_token;
-            f.parentNode.insertBefore(s, f);
-        })(window, document);
+            (function (w, d) {
+                w.amo_pixel_token = 'p1Ip4iB8yqaEyXU9HPmcTL5sQ0RYFMjQ5D+Kpr5QBxbyJAErqRr3fWC8LXHUkY9h';
+                var s = document.createElement('script'), f = d.getElementsByTagName('script')[0];
+                s.id = 'amo_pixel_js';
+                s.type = 'text/javascript';
+                s.async = true;
+                s.src = 'https://piper.amocrm.ru/pixel/js/tracker/pixel.js?token=' + w.amo_pixel_token;
+                f.parentNode.insertBefore(s, f);
+            })(window, document);
     </script>
 }

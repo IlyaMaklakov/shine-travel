@@ -1,0 +1,71 @@
+﻿@model ShineMvc.Models.WelcomeViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>Shine | Путешествия - #КРУГОСВЕТНОЕ</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <link rel="icon" href="/shine.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/shine.ico" type="image/x-icon" />
+    <style>
+        .no-js #loader {
+            display: none;
+        }
+
+        .js #loader {
+            display: block;
+            position: absolute;
+            left: 100px;
+            top: 0;
+        }
+
+        .se-pre-con {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(/assets/img/Preloader_2.gif) center no-repeat #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="se-pre-con"></div>
+<form id="welcomeForm" style="visibility:hidden" action="@Url.Action("Index")" method="post">
+    <input name="UserEmail" type="hidden" value="@Model.UserEmail">
+    <input name="Version" type="hidden" value="@Model.Version">
+    <input name="VideoFriendlyUrl" type="hidden" value="@Model.VideoFriendlyUrl">
+    <input id="VisitorId" name="VisitorId" type="hidden">
+</form>
+<script src="~/assets/vendors/jquery-1.12.0.min.js"></script>
+<script src="~/assets/vendors/modernizr-2.6.2.js"></script>
+<script src="~/assets/vendors/reqwest.js"></script>
+<script src="~/assets/js/amocrm.rest-client.js"></script>
+<script src="~/assets/js/welcome.js"></script>
+<script type="text/javascript" id="amo_pixel_identifier_js" async="async" src="https://piper.amocrm.ru/pixel/js/identifier/pixel_identifier.js"></script>
+<script>
+
+    window.AMOPIXEL_IDENTIFIER_PARAMS = window.AMOPIXEL_IDENTIFIER_PARAMS || {};
+    window.AMOPIXEL_IDENTIFIER_PARAMS.onload = function(pixelIdentifier) {
+        var visitorUid = pixelIdentifier.getVisitorUid(); // Получаем visitor_uid
+        console.log('visitor_uid', visitorUid);
+        if (visitorUid) {
+            // Записываем его в скрытое поле формы 'visitor_uid'
+            document.getElementById('VisitorId').value = visitorUid;
+            document.getElementById('welcomeForm').submit();
+
+
+        }
+    };
+
+</script>
+</body>
+</html>
