@@ -4,9 +4,9 @@ using Newtonsoft.Json;
 
 #endregion
 
-namespace AmoCrm.Client
+namespace AmoCrm.Client.Auth
 {
-    public class AuthRequestModel
+    public class AuthRequest
     {
         [JsonProperty("USER_HASH")]
         public string Hash { get; set; }

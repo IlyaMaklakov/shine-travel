@@ -2,43 +2,52 @@
 <h3>Все видео</h3>
 @foreach (var videoSettingsItem in Model)
 {
-    <div class="row clearfix">
-        <div class="col-md-5 col-sm-2  col-xs-3 play-div">
-            @if (videoSettingsItem.IsUnlocked)
-            {
-                <div class="play">
-                    <img src="/assets/img/play.png" alt="">
-
+    if (videoSettingsItem.IsUnlocked)
+    {
+        <a  class="playlist-link" href="/@videoSettingsItem.Version/@videoSettingsItem.FriendlyUrl">
+            <div class="playlist-link-div row clearfix">
+                <div class="col-md-5 col-sm-2  col-xs-3 play-div">
+                    <div class="play">
+                        <img src="/assets/img/play.png" alt="">
+                    </div>
+                    <img src="@videoSettingsItem.UnLockedThumbnailUrl" alt="@videoSettingsItem.Title" class="img">
                 </div>
-                <img src="@videoSettingsItem.UnLockedThumbnailUrl" alt="@videoSettingsItem.Title" class="img">
-
-            }
-            else
-            {
-                <div class="lock">
-                    <img src="/assets/img/lock.png" alt="">
+                <div class="col-md-7 col-sm-10 col-xs-9 text">
+                    <div>
+                        <span class="video-playlist-title" style="font-size: 14px !important; color: #000 !important; font-weight: 700 !important;">
+                            @videoSettingsItem.Title
+                        </span>
+                    </div>
+                    <p style="font-size: 13px; line-height: 16px; color: #909090;  margin: 0;">
+                        @videoSettingsItem.ShortDescription
+                    </p>
+                 
                 </div>
-                <img src="@videoSettingsItem.LockedThumbnailUrl" alt="@videoSettingsItem.Title" class="img">
-
-            }
-
-        </div>
-        <div class="col-md-7 col-sm-10 col-xs-9 text">
-            <div>
-                @if (videoSettingsItem.IsUnlocked)
-                {
-                    <a href="/@videoSettingsItem.Version/@videoSettingsItem.FriendlyUrl">
-                        @videoSettingsItem.Title
-                    </a>
-                }
-                else
-                {
-                    <a href="#" onclick="return false;">
-                        @videoSettingsItem.Title
-                    </a>
-                }
             </div>
-            @videoSettingsItem.ShortDescription
-        </div>
-    </div>
+        </a>
+    }
+    else
+    {
+        <a class="playlist-link" href="#" onclick="return false;">
+            <div class="playlist-link-div row clearfix">
+                <div class="col-md-5 col-sm-2  col-xs-3 play-div">
+                    <div class="lock">
+                        <img src="/assets/img/lock.png" alt="">
+                    </div>
+                    <img src="@videoSettingsItem.LockedThumbnailUrl" alt="@videoSettingsItem.Title" class="img">
+                </div>
+                <div class="col-md-7 col-sm-10 col-xs-9 text">
+                    <div>
+                        <span class="video-playlist-title" style="font-size: 14px !important; color: #000 !important; font-weight: 700 !important;">
+                            @videoSettingsItem.Title
+                        </span>
+                    </div>
+                    <p style="font-size: 13px; line-height: 16px; color: #909090; margin: 0;">
+                        @videoSettingsItem.ShortDescription
+                    </p>
+                </div>
+            </div>
+        </a>
+    }
+
 }

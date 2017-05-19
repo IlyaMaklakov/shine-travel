@@ -4,12 +4,10 @@ using Newtonsoft.Json;
 
 #endregion
 
-namespace AmoCrm.Client
+namespace AmoCrm.Client.Http
 {
-    public class SetLeadsResponse
+    public class BaseResponse
     {
-        public LeadViewModel[] Leads { get; set; }
-
         [JsonProperty("server_time")]
         public string ServerTime { get; set; }
     }

@@ -47,6 +47,8 @@
     <Compile Include="Json\ShineDateTimeConverter.cs" />
     <Compile Include="Json\JsonSerializationHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\Crypt.cs" />
+    <Compile Include="Threading\AsyncHelpers.cs" />
     <Compile Include="Timing\Clock.cs" />
     <Compile Include="Timing\ClockProviders.cs" />
     <Compile Include="Timing\DateTimeRange.cs" />

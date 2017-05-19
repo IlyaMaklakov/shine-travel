@@ -21,7 +21,7 @@ namespace ShineMvc.Controllers
 {
     public class WelcomeController : Controller
     {
-        private AmoCrmClient _amoCrmClient;
+        private readonly AmoCrmClient _amoCrmClient;
         public WelcomeController()
         {
             this._amoCrmClient = new AmoCrmClient();
@@ -39,21 +39,26 @@ namespace ShineMvc.Controllers
         [HttpPost]
         public async Task<ActionResult> Index(WelcomeViewModel welcomeViewModel)
         {
-            var r = await _amoCrmClient.Auth("maa@shine.city", "b526e7df7b1f22b34a3b8a1d3b7530f0");
-            var u = await this._amoCrmClient.UpdateVisitorIdForUserLeads(
-                        welcomeViewModel.UserEmail,
-                        welcomeViewModel.VisitorId);
+            try
+            {
+                var r = await _amoCrmClient.AuthAsync("maa@shine.city", "b526e7df7b1f22b34a3b8a1d3b7530f0");
+                //var resultOfAdding = await _amoCrmClient.AddLeadToContactAsync(welcomeViewModel.UserEmail, welcomeViewModel.VisitorId, welcomeViewModel.VideoFriendlyUrl);
+                var resultOfAdding = await _amoCrmClient.UpdateVisitorIdForUserLead(welcomeViewModel.UserEmail, welcomeViewModel.VisitorId, welcomeViewModel.VideoFriendlyUrl);
+                var cookie =
+                    new HttpCookie("TestAmoCrm")
+                        {
+                            ["visitor_uid"] =
+                            welcomeViewModel.VisitorId,
+                            Expires = DateTime.Now.AddYears(1)
+                        };
 
+                this.Response.Cookies.Add(cookie);
+            }
+            catch (Exception e)
+            {
 
-            var cookie =
-                new HttpCookie("TestAmoCrm")
-                {
-                    ["visitor_uid"] =
-                        welcomeViewModel.VisitorId,
-                    Expires = DateTime.Now.AddYears(1)
-                };
+            }
 
-            this.Response.Cookies.Add(cookie);
             return RedirectToAction(
                 "Video",
                 "Home",

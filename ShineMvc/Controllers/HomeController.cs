@@ -2,10 +2,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Web.Mvc;
-using System.Web.Routing;
 
 using Shine.Application.Video;
 using Shine.Core;
@@ -19,62 +17,17 @@ namespace ShineMvc.Controllers
 {
     public class HomeController : ShineBaseController
     {
-        private readonly IVideoService videoService;
+        private readonly IVideoService _videoService;
 
-        protected static List<VersionVideoSettings> videoSettings;
-
-        protected const string VideoConfigsDirectory = "~/App_Data";
 
         public HomeController()
         {
-            this.videoService = new VideoService();
+            this._videoService = new VideoService();
         }
-
-        //protected override void Initialize(RequestContext requestContext)
-        //{
-        //    base.Initialize(requestContext);
-        //    videoSettings = GetAvailableVideoSettings();
-        //}
-
-
-        private List<VersionVideoSettings> GetAvailableVideoSettings()
-        {
-            var resultList = new List<VersionVideoSettings>();
-            var directory = this.Server.MapPath(VideoConfigsDirectory);
-            var fileNames = Directory.GetFiles(directory, "*.json", SearchOption.TopDirectoryOnly);
-            foreach (var fileName in fileNames)
-            {
-
-
-                var newVersionSettings =
-                    new VersionVideoSettings
-                    {
-                        VideoSettingsList =
-                                this.videoService.GetVideoSettingsByVersion(fileName)
-                    };
-
-                var configFileName = Path.GetFileNameWithoutExtension(fileName);
-                if (!string.IsNullOrWhiteSpace(configFileName))
-                {
-                    var parts = configFileName.Split('.');
-                    if (parts.Length >= 2)
-                    {
-                        newVersionSettings.Version = parts.LastOrDefault();
-                        resultList.Add(newVersionSettings);
-                    }
-
-                }
-
-
-            }
-
-            return resultList;
-        }
-
         public ActionResult Index()
         {
             var filePath = this.GetVideoSettingsFilePath(ShineConsts.DefaultVideoSettingsVersion);
-            var videoList = this.videoService.GetVideoSettingsByVersion(filePath);
+            var videoList = this._videoService.GetVideoSettingsByVersion(filePath);
 
             var firstVideo = videoList.FirstOrDefault(v => v.Order == 1);
             if (firstVideo == null)
@@ -142,7 +95,7 @@ namespace ShineMvc.Controllers
             }
 
             var filePath = this.GetVideoSettingsFilePath(version);
-            var videSettingsFromFile = this.videoService.GetVideoSettingsByVersion(filePath);
+            var videSettingsFromFile = this._videoService.GetVideoSettingsByVersion(filePath);
 
             return videSettingsFromFile.Select(
                 videoItem => new VideoPlayListItem
@@ -175,7 +128,7 @@ namespace ShineMvc.Controllers
             var user = CurrentUser;
 
             var filePath = this.GetVideoSettingsFilePath(version);
-            var videoList = this.videoService.GetVideoSettingsByVersion(filePath);
+            var videoList = this._videoService.GetVideoSettingsByVersion(filePath);
 
             var selectedVideo = string.IsNullOrWhiteSpace(friendlyUrl)
                                     ? videoList.FirstOrDefault(v => v.Order == 1)
@@ -201,6 +154,10 @@ namespace ShineMvc.Controllers
 
             var maxOrder = UpdateLastUnlockedVideoInfo(videoList, version, selectedVideo);
 
+            if (selectedVideo.Order == maxOrder && selectedVideo.Order != videoList.Select(v => v.Order).Max())
+            {
+                videoViewModel.ShowNextVideoTeaserText = true;
+            }
             var playlist = this.GetPlayListViewModel(version, maxOrder);
 
             videoViewModel.VideoPlayList = playlist;

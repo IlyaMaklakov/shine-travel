@@ -40,6 +40,7 @@
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,22 +49,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AmoHttpResponse.cs" />
-    <Compile Include="AmoRequest.cs" />
-    <Compile Include="AmoResponse.cs" />
-    <Compile Include="AmoUser.cs" />
+    <Compile Include="Accounts\AccountResponse.cs" />
+    <Compile Include="BaseAmoEntity.cs" />
+    <Compile Include="Contacts\Contact.cs" />
+    <Compile Include="Crud\AddOrUpdateWrapper.cs" />
+    <Compile Include="Http\BaseResponse.cs" />
+    <Compile Include="Http\HttpResponseWrapper.cs" />
+    <Compile Include="Http\HttpRequestWrapper.cs" />
+    <Compile Include="Auth\AuthResponse.cs" />
+    <Compile Include="Leads\LeadStatus.cs" />
+    <Compile Include="Pipelines\PipeLine.cs" />
+    <Compile Include="Pipelines\PipeLinesResponse.cs" />
+    <Compile Include="Pipelines\PipeLineStatus.cs" />
+    <Compile Include="Users\User.cs" />
     <Compile Include="AmoCrmClient.cs" />
-    <Compile Include="AmoAccount.cs" />
-    <Compile Include="AuthRequestModel.cs" />
-    <Compile Include="LeadViewModel.cs" />
+    <Compile Include="Accounts\Account.cs" />
+    <Compile Include="Auth\AuthRequest.cs" />
+    <Compile Include="Contacts\ContactsResponse.cs" />
+    <Compile Include="Leads\Lead.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SetLeadsRequest.cs" />
-    <Compile Include="SetLeadsResponse.cs" />
-    <Compile Include="SetLeadsViewModel.cs" />
+    <Compile Include="Leads\SetLeadsRequest.cs" />
+    <Compile Include="Leads\SetLeadsResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shine.Framework\Shine.Framework.csproj">
+      <Project>{ACC85808-4C98-4804-A7B1-455956FAAAD5}</Project>
+      <Name>Shine.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

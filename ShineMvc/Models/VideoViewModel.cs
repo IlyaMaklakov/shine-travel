@@ -21,6 +21,8 @@ namespace ShineMvc.Models
 
         public string VimeoUrl { get; set; }
 
+        public bool ShowNextVideoTeaserText { get; set; }
+
         public List<VideoPlayListItem> VideoPlayList { get; set; }
     }
 }

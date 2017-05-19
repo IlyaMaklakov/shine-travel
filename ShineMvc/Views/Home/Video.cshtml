@@ -1,5 +1,15 @@
 ﻿@model ShineMvc.Models.VideoViewModel
-
+@{
+    const string Amount = "10.23";
+    const string Amountcurr = "RUB";
+    const string Currency = "MBC";
+    const string Number = "5412";
+    var description = HttpUtility.UrlEncode($"Тестовая оплата на {Amount} {Amountcurr}");
+    const string Trtype = "1";
+    const string Account = "acc001002";
+    var signature = $"{Amount}:{Amountcurr}:{Currency}:{Number}:{description}:{Trtype}:{Account}:74412ecf90d8471d8f8c35f9c5e8a385:FCY0xsqriM7maLkuP+rQDlSMGf369NZUAxH2dElTm6A=";
+    signature = Shine.Framework.Security.Crypt.Md5(signature).ToUpper();
+}
 <div class="row clearfix">
     <div class="col-md-8 left left2">
         <div class="row">
@@ -12,7 +22,18 @@
                     </div>
 
                     <h1>@Model.VideoTitle</h1>
-                    @Model.VideoDescription
+                    <div style="line-height: 21px;">
+                        <p>
+                            @Model.VideoDescription
+                        </p>
+                        @if (Model.ShowNextVideoTeaserText)
+                        {
+                            <p class="c-left  c-font-bold">
+                                Доступ к следующему видео откроется через 2 дня
+                            </p>
+                        }
+                    </div>
+                   
                 </div>
             </div>
         </div>
@@ -20,20 +41,33 @@
 
         @if (Model.ShowBookingBlockAfter.HasValue)
         {
+
             <div class="row">
-                <div class="col-md-12">
-                    <div class="c-content-box c-size-sm" id="purchase-block">
+                <form action="https://secure.paygateway.ru/api/payment/start" method=POST>
+                    <input type="hidden" name="amount" value="@Amount>">
+                    <input type="hidden" name="amountcurr" value="@Amountcurr>">
+                    <input type="hidden" name="currency" value="@Currency>">
+                    <input type="hidden" name="number" value="@Number>">
+                    <input type="hidden" name="description" value="@description>">
+                    <input type="hidden" name="trtype" value="@Trtype">
+                    <input type="hidden" name="account" value="@Account>">
+                    <input type="hidden" name="signature" value="@signature>">
 
-                        <div class="c-shop-banner-3">
-                            <h2 class="c-title c-font-bold c-font-white"> Хочешь с нами в кругосветное путешествие?</h2>
-                            <p class="c-desc c-font-16 c-font-white">37 мест уже забронировано</p>
+
+                    <div class="col-md-12">
+                        <div class="c-content-box c-size-sm" id="purchase-block">
+
+                            <div class="c-shop-banner-3">
+                                <h2 class="c-title c-font-bold c-font-white"> Хочешь с нами в кругосветное путешествие?</h2>
+                                <p class="c-desc c-font-16 c-font-white">37 мест уже забронировано</p>
+                            </div>
+                            <div class="purchase-btn-block">
+                                <input type="button" class="btn btn-lg c-btn-yellow c-btn-uppercase c-btn-bold" value="Забронировать место">
+                            </div>
                         </div>
-                        <div class="purchase-btn-block">
-                            <button type="button" class="btn btn-lg c-btn-yellow c-btn-uppercase c-btn-bold">Забронировать место</button>
-                        </div>
+
                     </div>
-
-                </div>
+                </form>
             </div>
         }
     </div>
@@ -63,17 +97,4 @@
             });
         </script>
     }
-
-
-    <script type="text/javascript">
-            (function (w, d) {
-                w.amo_pixel_token = 'p1Ip4iB8yqaEyXU9HPmcTL5sQ0RYFMjQ5D+Kpr5QBxbyJAErqRr3fWC8LXHUkY9h';
-                var s = document.createElement('script'), f = d.getElementsByTagName('script')[0];
-                s.id = 'amo_pixel_js';
-                s.type = 'text/javascript';
-                s.async = true;
-                s.src = 'https://piper.amocrm.ru/pixel/js/tracker/pixel.js?token=' + w.amo_pixel_token;
-                f.parentNode.insertBefore(s, f);
-            })(window, document);
-    </script>
 }
