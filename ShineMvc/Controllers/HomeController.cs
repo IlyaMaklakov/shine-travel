@@ -163,5 +163,7 @@ namespace ShineMvc.Controllers
             videoViewModel.VideoPlayList = playlist;
             return videoViewModel;
         }
+
+
     }
 }

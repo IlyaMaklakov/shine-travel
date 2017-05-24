@@ -1,53 +1,149 @@
 ﻿<!doctype html>
 <html>
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>Shine | Путешествия - #КРУГОСВЕТНОЕ</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap-theme.css"/>
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
+
+    @Styles.Render("~/bundles/globalStyles")
     @RenderSection("styles", false)
     <link rel="icon" href="/shine.ico" type="image/x-icon">
     <link rel="shortcut icon" href="/shine.ico" type="image/x-icon" />
 </head>
 
 <body>
-<div id="one">
-    <div class="container">
-        <div class="row clearfix">
-            <div class="col-md-10 col-xs-10">
-                <img src="/assets/img/logo-top.png" alt="" class="logo"/>
+
+    <div id="one">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-md-10 col-xs-10">
+                    <a href="http://shine.city/60/">
+                        <img src="/assets/img/logo-top.png" alt="" class="logo" />
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container-white">
+            @RenderBody()
+        </div>
+    </div>
+    <div id="footer">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-md-3 col-sm-6 ">
+                    <img src="/assets/img/logo.png" width="236" height="33" alt="" />
+                </div>
+                <div class="col-md-3 col-sm-6 text" style="margin: 0; text-align: left;">
+                    <input type="button" data-toggle="modal" data-target="#contact-us-modal" class="btn c-btn-yellow" value="Связаться с нами">
+                </div>
+                <div class="col-md-3 col-sm-6 text" style="margin: 0; text-align: left;">
+                    Есть вопросы по кругосветке? Пишите нам, мы всегда на связи:
+                    <a href="mailto:60@shine.city">
+                        <span>60@shine.city</span>
+                    </a>
+                </div>
+                <div class="col-md-3 col-sm-6  text">
+                    2017 © Все права защищены
+                </div>
             </div>
         </div>
     </div>
-    <div class="container-white">
-        @RenderBody()
-    </div>
-</div>
-<div id="footer">
-    <div class="container">
-        <div class="row clearfix">
-            <div class="col-md-4 col-sm-6 ">
-                <img src="/assets/img/logo.png" width="236" height="33" alt=""/>
+    <div class="modal fade" id="contact-us-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content c-square">
+                <div class="modal-body">
+                    <div id="swalOk" style="display: none; text-align: center">
+                        <div  class="swal2-icon swal2-success swal2-animate-success-icon" >
+                            <div class="swal2-success-circular-line-left" style="background: rgb(255, 255, 255);"></div>
+                            <span class="swal2-success-line-tip swal2-animate-success-line-tip"></span>
+                            <span class="swal2-success-line-long swal2-animate-success-line-long"></span>
+                            <div class="swal2-success-ring"></div>
+                            <div class="swal2-success-fix" style="background: rgb(255, 255, 255);"></div>
+                            <div class="swal2-success-circular-line-right" style="background: rgb(255, 255, 255);"></div>
+                        </div>    
+                        <h3 class="c-font-25 c-font-bold" style="text-transform: none">Спасибо!</h3>
+                        <h3 class="c-font-bold" style="text-transform: none">С вами свяжутся</h3>
+                        <div style="text-align: center">
+                            <button type="button" data-dismiss="modal" class="btn c-btn-green c-btn-bold c-btn-square">OK</button>
+                        </div>
+                    </div>
+                    
+                    <div id="swalNotOk" style="display: none; text-align: center">
+                        <div class="swal2-icon swal2-error swal2-animate-error-icon">
+                            <span class="swal2-x-mark swal2-animate-x-mark">
+                                <span class="swal2-x-mark-line-left"></span>
+                                <span class="swal2-x-mark-line-right"></span>
+                            </span>
+                        </div>  
+                        <h3 class="c-font-uppercase c-font-25 c-font-bold">Ошибка!</h3>
+                        <h3 class="c-font-bold" style="text-transform: none">Попробуйте повторить позже</h3>
+                        <div style="text-align: center">
+                            <button type="button" data-dismiss="modal" class="btn c-btn-green c-btn-bold c-btn-square">OK</button>
+                        </div>
+                    </div>
+
+                    <div id="feedbackBlock" class="c-feedback">
+
+                        <form id="contacts-form" action="#">
+                            <div class="form-group">
+                                <input type="text" placeholder="ФИО" class="form-control" name="UserName" id="userName" minlength="2" required>
+                            </div>
+                            <div class="form-group">
+                                <input placeholder="Email" id="email" class="form-control" type="email" name="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea rows="5" id="message" name="Message" placeholder="Ваше сообщение..." class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group" style="text-align: right;">
+                                <button type="submit" class="btn c-btn-green c-btn-bold c-btn-square">Отправить</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4 col-sm-6 text" style="margin: 0; text-align: left;">
-                Есть вопросы по кругосветке? Пишите нам, мы всегда на связи: 
-                <a href="mailto:support@shine.city">
-                    <span>support@shine.city</span>
-                </a>
-                
-            </div>
-            <div class="col-md-4 col-sm-6  text" >
-                2017 © Все права защищены
-            </div>
+            <!-- /.modal-content -->
         </div>
     </div>
-</div>
-@Scripts.Render("~/bundles/jquery")
-@RenderSection("scripts", false)
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", false)
+    <script>
+        jQuery(document).ready(function () {
+            $("#contacts-form").validate({
+                submitHandler: function (form) {
+                    var formData = {
+                        name: $("#userName").val(),
+                        email: $("#email").val(),
+                        message: $("#message").val(),
+                    }
+                    $.ajax({
+                        data: JSON.stringify(formData),
+                        type: 'post',
+                        contentType: "application/json",
+                        async: false,
+                        dataType: 'json',
+                        url: '/ContactUs/SendContactUsMessage',
+                        success: function (response) {
+                            if (response) {
+                                $("#feedbackBlock").hide();
+                                $("#swalOk").show();                             
+                            } else {
+                                $("#swalNotOk").show();
+                            }
+                        }
+                    });
+                },
+                errorPlacement: function (error, element) { },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).parents("div.form-group").addClass("has-error");
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).parents(".error").removeClass("has-error");
+                }
+            });
+        });
+    </script>
 </body>
 </html>

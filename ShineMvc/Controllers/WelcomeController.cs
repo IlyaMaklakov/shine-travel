@@ -64,5 +64,7 @@ namespace ShineMvc.Controllers
                 "Home",
                 new { version = welcomeViewModel.Version, friendlyUrl = welcomeViewModel.VideoFriendlyUrl });
         }
+
+
     }
 }

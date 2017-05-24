@@ -19,6 +19,10 @@ namespace ShineMvc
 
             routes.MapRoute("EmailWelcome", "welcome/{email}/{version}/{videoFriendlyUrl}", new { controller = "Welcome", action = "Index" });
 
+            routes.MapRoute("ContactUs", "ContactUs/SendContactUsMessage", new { controller = "ContactUs", action = "SendContactUsMessage" });
+
+            routes.MapRoute("Booking", "ContactUs/Booking", new { controller = "ContactUs", action = "Booking" });
+
             routes.MapRoute("VideoRoute", "{version}/{friendlyUrl}", new { controller = "Home", action = "Video" });
 
             routes.MapRoute("Default", "{controller}/{action}", new { controller = "Home", action = "Index" });

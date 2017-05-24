@@ -142,6 +142,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\ShineBaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContactUsModel.cs" />
     <Compile Include="Models\VideoViewModel.cs" />
     <Compile Include="Models\WelcomeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -200,9 +202,48 @@
     <Content Include="assets\js\welcome.js" />
     <Content Include="assets\js\shine.js" />
     <Content Include="assets\js\videurls.js" />
+    <Content Include="assets\vendors\inputmask\inputmask\bindings\inputmask.binding.js" />
+    <Content Include="assets\vendors\inputmask\inputmask\dependencyLibs\inputmask.dependencyLib.jqlite.js" />
+    <Content Include="assets\vendors\inputmask\inputmask\dependencyLibs\inputmask.dependencyLib.jquery.js" />
+    <Content Include="assets\vendors\inputmask\inputmask\dependencyLibs\inputmask.dependencyLib.js" />
+    <Content Include="assets\vendors\inputmask\inputmask\global\document.js" />
+    <Content Include="assets\vendors\inputmask\inputmask\global\window.js" />
+    <Content Include="assets\vendors\inputmask\inputmask\inputmask.date.extensions.js" />
+    <Content Include="assets\vendors\inputmask\inputmask\inputmask.extensions.js" />
+    <Content Include="assets\vendors\inputmask\inputmask\inputmask.js" />
+    <Content Include="assets\vendors\inputmask\inputmask\inputmask.numeric.extensions.js" />
+    <Content Include="assets\vendors\inputmask\inputmask\inputmask.phone.extensions.js" />
+    <Content Include="assets\vendors\inputmask\inputmask\jquery.inputmask.js" />
+    <Content Include="assets\vendors\inputmask\inputmask\phone-codes\phone-be.js" />
+    <Content Include="assets\vendors\inputmask\inputmask\phone-codes\phone-nl.js" />
+    <Content Include="assets\vendors\inputmask\inputmask\phone-codes\phone-ru.js" />
+    <Content Include="assets\vendors\inputmask\inputmask\phone-codes\phone-uk.js" />
+    <Content Include="assets\vendors\inputmask\inputmask\phone-codes\phone.js" />
+    <Content Include="assets\vendors\inputmask\jquery.inputmask.bundle.js" />
+    <Content Include="assets\vendors\inputmask\min\inputmask\bindings\inputmask.binding.min.js" />
+    <Content Include="assets\vendors\inputmask\min\inputmask\dependencyLibs\inputmask.dependencyLib.jqlite.min.js" />
+    <Content Include="assets\vendors\inputmask\min\inputmask\dependencyLibs\inputmask.dependencyLib.jquery.min.js" />
+    <Content Include="assets\vendors\inputmask\min\inputmask\dependencyLibs\inputmask.dependencyLib.min.js" />
+    <Content Include="assets\vendors\inputmask\min\inputmask\global\document.min.js" />
+    <Content Include="assets\vendors\inputmask\min\inputmask\global\window.min.js" />
+    <Content Include="assets\vendors\inputmask\min\inputmask\inputmask.date.extensions.min.js" />
+    <Content Include="assets\vendors\inputmask\min\inputmask\inputmask.extensions.min.js" />
+    <Content Include="assets\vendors\inputmask\min\inputmask\inputmask.min.js" />
+    <Content Include="assets\vendors\inputmask\min\inputmask\inputmask.numeric.extensions.min.js" />
+    <Content Include="assets\vendors\inputmask\min\inputmask\inputmask.phone.extensions.min.js" />
+    <Content Include="assets\vendors\inputmask\min\inputmask\jquery.inputmask.min.js" />
+    <Content Include="assets\vendors\inputmask\min\inputmask\phone-codes\phone-be.min.js" />
+    <Content Include="assets\vendors\inputmask\min\inputmask\phone-codes\phone-nl.min.js" />
+    <Content Include="assets\vendors\inputmask\min\inputmask\phone-codes\phone-ru.min.js" />
+    <Content Include="assets\vendors\inputmask\min\inputmask\phone-codes\phone-uk.min.js" />
+    <Content Include="assets\vendors\inputmask\min\inputmask\phone-codes\phone.min.js" />
+    <Content Include="assets\vendors\inputmask\min\jquery.inputmask.bundle.min.js" />
     <Content Include="assets\vendors\jquery-1.12.0.min.js" />
     <Content Include="assets\vendors\bootstrap\bootstrap.css" />
+    <Content Include="assets\vendors\jquery.validate.min.js" />
     <Content Include="assets\vendors\reqwest.js" />
+    <Content Include="assets\vendors\sweetalert2\sweetalert2.css" />
+    <Content Include="assets\vendors\sweetalert2\sweetalert2.js" />
     <Content Include="shine.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -225,7 +266,9 @@
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\ContactUs\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
