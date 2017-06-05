@@ -17,6 +17,8 @@ namespace ShineMvc
 
             routes.MapRoute("ServerError", "ServerError", new { controller = "Error", action = "ServerError" });
 
+            routes.MapRoute("ThankYou", "ContactUs/ThankYou", new { controller = "ContactUs", action = "ThankYou" });
+
             routes.MapRoute("EmailWelcome", "welcome/{email}/{version}/{videoFriendlyUrl}", new { controller = "Welcome", action = "Index" });
 
             routes.MapRoute("ContactUs", "ContactUs/SendContactUsMessage", new { controller = "ContactUs", action = "SendContactUsMessage" });

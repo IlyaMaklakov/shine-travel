@@ -13,8 +13,12 @@
                     <h1>@Model.VideoTitle</h1>
                     <div style="line-height: 21px;">
                         <p>
-                            @Model.VideoDescription
+                            @Html.Raw(Model.VideoDescription)
                         </p>
+                        @if (Model.Index == 1)
+                        {           
+                            <p>Обязательно прочитайте мою историю в <a href="https://goo.gl/wTXx42">Facebook</a> </p>
+                        }
                         @if (Model.ShowNextVideoTeaserText)
                         {
                             <p class="c-left  c-font-bold">
@@ -57,49 +61,38 @@
         <div class="modal-content c-square">
 
             <div class="modal-body">
-                <div id="bookingOk" style="display: none; text-align: center">
-                    <div class="swal2-icon swal2-success swal2-animate-success-icon">
-                        <div class="swal2-success-circular-line-left" style="background: rgb(255, 255, 255);"></div>
-                        <span class="swal2-success-line-tip swal2-animate-success-line-tip"></span>
-                        <span class="swal2-success-line-long swal2-animate-success-line-long"></span>
-                        <div class="swal2-success-ring"></div>
-                        <div class="swal2-success-fix" style="background: rgb(255, 255, 255);"></div>
-                        <div class="swal2-success-circular-line-right" style="background: rgb(255, 255, 255);"></div>
+                <div class="header-form callback">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть"><span aria-hidden="true">×</span></button>
+                    <div class="header-form-title">
+                        <b>Забронируй место <br>на путешествие</b>
+                  
+                       
                     </div>
-                    <h3 class="c-font-25 c-font-bold" style="text-transform: none">Спасибо за заявку!</h3>
-                    <h3 class="c-font-bold" style="text-transform: none">С вами свяжутся</h3>
-                    <div style="text-align: center">
-                        <button type="button" data-dismiss="modal" class="btn c-btn-green c-btn-bold c-btn-square">OK</button>
-                    </div>
-                </div>
 
-                <div id="bookingNotOk" style="display: none; text-align: center">
-                    <div class="swal2-icon swal2-error swal2-animate-error-icon">
-                        <span class="swal2-x-mark swal2-animate-x-mark">
-                            <span class="swal2-x-mark-line-left"></span>
-                            <span class="swal2-x-mark-line-right"></span>
-                        </span>
-                    </div>
-                    <h3 class="c-font-uppercase c-font-25 c-font-bold">Ошибка!</h3>
-                    <h3 class="c-font-bold" style="text-transform: none">Попробуйте повторить позже</h3>
-                    <div style="text-align: center">
-                        <button type="button" data-dismiss="modal" class="btn c-btn-green c-btn-bold c-btn-square">OK</button>
-                    </div>
-                </div>
-                <div id="bookingDiv" class="c-feedback">
-                    <form id="booking-form" action="#">
-                        <div class="form-group">
-                            <input type="text" placeholder="Имя" class="form-control" name="UserName" id="bookingUserName" minlength="2" required>
+                    <form id="booking-form" action="@Url.Action("Booking", "ContactUs")" method="POST">
+                        <div class="header-form-item">
+                            <div class="header-form-input">
+                                <input type="text" autocomplete="off" name="Name" id="bookingUserName" required placeholder="Ваше имя">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <input placeholder="Телефон" data-inputmask="'alias': 'phone'" id="bookingPhone" class="form-control" type="text" name="Phone" required>
+                        <div class="header-form-item">
+                            <div class="header-form-input">
+                                <input type="text"  autocomplete="off"  data-inputmask="'alias': 'phone'" id="bookingPhone" name="Phone" required placeholder="Ваш телефон">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <input placeholder="Email" id="bookingEmail" class="form-control" type="email" name="Email" required>
+
+                        <div class="header-form-item">
+                            <div class="header-form-input">
+                                <input  id="bookingEmail"  autocomplete="off"  placeholder="Ваш email" type="email" name="Email" required>
+                            </div>
                         </div>
-                        <div class="form-group" style="text-align: center;">
-                            <button type="submit" class="btn c-btn-green c-btn-bold c-btn-square">Забронировать место</button>
+                        <div class="header-form-item">
+
                         </div>
+                        <div class="header-form-item">
+                            <input type="submit" value="Забронировать" title="Забронировать место" class="btn btn-lg c-btn-green c-btn-bold c-btn-square">
+                        </div>
+
                     </form>
                 </div>
             </div>
@@ -117,31 +110,11 @@
             Shine.init('@Model.VimeoUrl');
             $("#booking-form").validate({
                 submitHandler: function(form) {
-                    var formData = {
-                        name: $("#bookingUserName").val(),
-                        email: $("#bookingEmail").val(),
-                        phone: $("#bookingPhone").val()
-                    }
-                    $.ajax({
-                        data: JSON.stringify(formData),
-                        type: 'post',
-                        contentType: "application/json",
-                        async: false,
-                        dataType: 'json',
-                        url: '/ContactUs/Booking',
-                        success: function (response) {
-                            if (response) {
-                                $("#bookingDiv").hide();
-                                $("#bookingOk").show();
-                            } else {
-                                $("#bookingNotOk").show();
-                            }
-                        }
-                    });
+                    form.submit();
                 },
                 errorPlacement: function(error, element) {},
                 highlight: function(element, errorClass, validClass) {
-                    $(element).parents("div.form-group").addClass("has-error");
+                    $(element).parents("div.header-form-input").addClass("has-error");
                 },
                 unhighlight: function(element, errorClass, validClass) {
                     $(element).parents(".error").removeClass("has-error");

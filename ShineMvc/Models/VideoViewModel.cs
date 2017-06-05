@@ -13,16 +13,18 @@ namespace ShineMvc.Models
     {
         public User CurrentUser { get; set; }
 
+        public int Index { get; set; }
+
         public int? ShowBookingBlockAfter { get; set; }
 
+        public bool ShowNextVideoTeaserText { get; set; }
+
         public string VideoDescription { get; set; }
+
+        public List<VideoPlayListItem> VideoPlayList { get; set; }
 
         public string VideoTitle { get; set; }
 
         public string VimeoUrl { get; set; }
-
-        public bool ShowNextVideoTeaserText { get; set; }
-
-        public List<VideoPlayListItem> VideoPlayList { get; set; }
     }
 }

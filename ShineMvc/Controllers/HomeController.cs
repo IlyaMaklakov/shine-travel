@@ -149,7 +149,8 @@ namespace ShineMvc.Controllers
                 VimeoUrl = selectedVideo.VimeoUrl,
                 VideoDescription = selectedVideo.Description,
                 VideoTitle = selectedVideo.Title,
-                ShowBookingBlockAfter = selectedVideo.ShowBookingBlockAfter
+                ShowBookingBlockAfter = selectedVideo.ShowBookingBlockAfter,
+                Index = selectedVideo.Order
             };
 
             var maxOrder = UpdateLastUnlockedVideoInfo(videoList, version, selectedVideo);

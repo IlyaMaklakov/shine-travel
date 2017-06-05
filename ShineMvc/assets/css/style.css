@@ -20,7 +20,7 @@ html {
 .container-white {
     max-width: 1217px;
     position: relative;
-    margin: 74px auto 0 auto;
+    margin: 50px auto 0 auto;
 }
 /*top*/
 #one {
@@ -209,8 +209,8 @@ html {
 /*footer*/
 #footer {
     background-color: #000;
-    height: 108px;
-    padding-top: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     color: #7b7b7b;
     font-size: 12px;
 }
@@ -1108,9 +1108,221 @@ fieldset[disabled] .c-btn-border-2x.c-btn-yellow.active {
     }
 }
 
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: #e9f3f5 !important;
+}
 
+.header-form {
+    margin-left: -10px;
+    margin-right: -10px;
+    padding: 0 15px 0 15px;
+    font-size: 13px;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+}
 
+.header-form-title {
+    margin-bottom: 15px;
+    position: relative;
+    font-size: 16px;
+    color: #bfbfbf;
+    line-height: normal;
+    padding-bottom: 25px;
+    position: relative;
+}
 
+    .header-form-title b {
+        display: block;
+        display: block;
+        font-size: 30px;
+        line-height: 1;
+        margin-bottom: 10px;
+        color: #000;
+    }
+
+    .header-form-title:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        background-color: #cc0000;
+        width: 50px;
+    }
+
+.header-form-item {
+    margin-top: 15px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+    .header-form-item:first-child {
+        margin-top: 0px;
+    }
+
+    .header-form-item > span {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+.header-form-input {
+    border: 1px solid #e9f3f5;
+    background-color: #e9f3f5;
+    position: relative;
+    padding: 0 5px 0 15px;
+    margin-top: 21px;
+}
+
+    .header-form-input input[type="text"],
+    .header-form-input input[type="email"],
+    .header-form-input input[type="password"] {
+        width: 100%;
+        background: none;
+        border: none;
+        resize: none;
+        font-size: 13px;
+        color: #333;
+        padding: 10px 0;
+        outline: none;
+        margin-top: 0px;
+    }
+
+    .header-form-input textarea {
+        width: 100%;
+        height: 150px;
+        background: none;
+        border: none;
+        resize: none;
+        font-size: 13px;
+        color: #fff;
+        font-family: 'osl';
+        padding: 10px 0;
+        outline: none;
+    }
+
+    .header-form-input img {
+        position: absolute;
+        right: 19px;
+        top: 50%;
+        margin-top: -9px;
+    }
+
+    .header-form-input textarea + img {
+        top: 19px;
+        margin-top: 0;
+    }
+.modal-dialog {
+    position: relative;
+    color: #ededee;
+}
+.modal-content {
+    margin: 0 auto;
+    position: relative;
+    border: 1px solid #999999;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    outline: 0;
+    max-width: 500px;
+    border-radius: 0;
+}
+.modal-body {
+    position: relative;
+    padding: 70px 70px;
+    border-radius: 0;
+}
+
+    .modal-body .close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 44px;
+        line-height: 1;
+        display: inline-block;
+        color: #000;
+        opacity: 1;
+    }
+
+[name="Name"] {
+    background: #e9f3f5 url(/assets/img/ic_name.png) 97% center no-repeat !important;
+    padding-right: 35px !important;
+}
+
+[name="Email"] {
+    background: #e9f3f5 url(/assets/img/ic_mail.png) 97% center no-repeat !important;
+    padding-right: 35px !important;
+}
+
+[name="Phone"] {
+    background: #e9f3f5 url(/assets/img/ic_phone.png) 97% center no-repeat !important;
+    padding-right: 35px !important;
+}
+/* ----------- iPad Pro ----------- */
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
+    #footer .text {
+        text-align: center !important;
+        margin: 0;
+    }
+}
+
+/* Portrait */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
+    #footer .text {
+        text-align: center !important;
+        margin: 0;
+    }
+}
+
+/* Landscape */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1.5) {
+    #footer .text {
+        text-align: center !important;
+        margin: 0;
+    }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    #footer .text {
+        text-align: center !important;
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+    #footer .text {
+        text-align: center !important;
+        margin-top: 20px;
+    }
+}
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+    #footer .text {
+        text-align: center !important;
+        margin-top: 20px;
+    }
+}
+
+@media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
+    #footer .text {
+        text-align: center !important;
+        margin-top: 20px;
+    }
+}
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+    #footer .text {
+        text-align: center !important;
+        margin-top: 20px;
+    }
+}
 
 
 @media screen and (max-width: 992px) {
@@ -1125,8 +1337,17 @@ fieldset[disabled] .c-btn-border-2x.c-btn-yellow.active {
     .left2 {
         padding-bottom: 35px;
     }
+
 }
 
+@media screen and (min-width: 992px) {
+ 
+
+    #footer .text {
+        text-align: left;
+        margin: 0;
+    }
+}
 @media screen and (max-width: 630px) {
 
     h1, h2, .blue .h2 {
@@ -1177,6 +1398,7 @@ fieldset[disabled] .c-btn-border-2x.c-btn-yellow.active {
 
         #footer .text {
             text-align: center;
+            margin-top: 20px;
         }
 
     .play img {
@@ -4426,8 +4648,7 @@ fieldset[disabled] .c-btn-border-2x.c-btn-yellow.active {
 .modal-header > .close {
     margin-top: -4px; }
 
-.modal-body {
-    padding: 20px; }
+
 
 .modal-footer {
     padding: 20px;
@@ -4586,3 +4807,1519 @@ fieldset[disabled] .c-btn-green-1.active {
         -webkit-box-shadow: none;
         box-shadow: none;
     }
+
+@media (max-width: 767px) {
+    .list-travels-body-title:after {
+        width: 40px;
+        height: 68px;
+        margin: -34px 0 0 -20px;
+        top: -37px;
+    }
+    .list-travel-play-video {
+        padding-top: 0;
+        width: 80px;
+        height: 80px;
+        margin: -40px 0 0 -40px;
+    }
+    .list-travel-play-video:after {
+        width: 80px;
+        height: 80px;
+        margin-left: -40px;
+    }
+    .list-travel-play-video:before {
+        left: 30px;
+        top: 25px;
+        border-top: 15px solid transparent;
+        border-left: 30px solid #20c2f3;
+        border-bottom: 15px solid transparent;
+    }
+    .list-travel-play-video span {
+        display: none;
+    }
+    #travels h1 {
+        font-size: 28px;
+    }
+    #travels h1 + p {
+        font-size: 16px;
+        margin-bottom: 25px;
+    }
+    .list-travels-title {
+        font-size: 14px;
+        min-height: 152px;
+    }
+    .list-travels-title span {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .list-travels-title-popup {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .list-travels-body {
+        padding: 0 0 45px 0;
+    }
+    .list-travels-body-titleimg {
+        margin-bottom: 25px;
+        max-height: 250px;
+    }
+    .list-travels-body-titleimg img {
+        width: 100%;
+    }
+    .list-travels-body-title {
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+    .list-travels-body-title span {
+        font-size: 18px !important;
+        line-height: 24px !important;
+    }
+    .list-travels-body-text {
+        margin-bottom: 35px;
+    }
+    .list-travels-body-img img {
+        margin-bottom: 35px;
+    }
+    .list-travels-body-text h3 {
+        font-size: 20px !important;
+    }
+    .list-travels-body-text-footer span {
+        font-size: 20px !important;
+    }
+    main #insert h3 {
+        font-size: 22px !important;
+    }
+    main #more h3 {
+        font-size: 22px !important;
+    }
+
+    main #soon h2 + p span {
+        font-size: 34px;
+        display: inline-block;
+        width: 100%;
+        line-height: 1.1;
+        color: #000;
+        margin-bottom: 5px;
+    }
+    main #soon.next h2 + p {
+        margin-bottom: 220px;
+    }
+    main #soon h3 {
+        font-size: 22px;
+        font-family: oss;
+        margin: 0 0 20px;
+        width: 80%;
+    }
+    header #video_header video {
+        height: 100%;
+    }
+    main #steps .text h4 {
+        font-size: 23px;
+        margin: 0px 0 10px;
+    }
+    .footer-logo {
+        width: 100%;
+        margin-bottom: 0;
+    }
+    .footer-logo div {
+        width: 100% !important;
+    }
+    .footer-logo div img {
+        margin: 0 auto;
+        width: auto !important;
+    }
+    main #steps .step6 .bg {
+        display: block !important;
+    }
+    .modal-body {
+        padding: 50px 20px;
+    }
+    .header-form-title b {
+        font-size: 24px;
+    }
+    #steps .ic {
+        display: none;
+    }
+    main #steps h2 {
+        font-size: 28px;
+        margin-bottom: 70px;
+    }
+    main #steps h2:before {
+        display: none;
+    }
+    main #steps {
+        padding-top: 10px;
+        margin-bottom: 0;
+    }
+    #steps .bg {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        order: 1;
+    }
+    #steps .bg2 {
+        display: none;
+    }
+    #steps .text {
+        padding: 0 15px !important;
+        width: 100% !important;
+        height: auto !important;
+        position: relative !important;
+        margin: 0 !important;
+        clear: both;
+        text-align: left;
+        order: 2;
+        float: left !important;
+    }
+    #steps .text p {
+        font-size: 16px !important;
+        margin-bottom: 40px;
+    }
+    #steps *:before {
+        display: none !important;
+    }
+    #steps *:after {
+        display: none;
+    }
+    #steps .white {
+        height: auto !important;
+        padding: 15px 0 !important;
+        background: #fff !important;
+    }
+    #steps .grey {
+        padding: 15px 0 !important;
+        height: auto !important;
+        display: inline-block;
+        width: 100% !important;
+        background: #fff !important;
+        margin: 0 !important;
+        min-width: 100% !important;
+        left: 0 !important;
+        order: 2;
+    }
+    #steps [class*="step"] {
+        height: auto !important;
+        text-align: center;
+        display: -webkit-flex !important;
+        display: -moz-flex !important;
+        display: -ms-flex !important;
+        display: -o-flex !important;
+        display: flex !important;
+        flex-direction: column;
+        margin: 0 !important;
+    }
+    main #steps .step6 .grey a {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        margin: 30px 0 0;
+        width: 100%;
+        text-align: center;
+        max-width: 300px;
+        bottom: 0 !important;
+    }
+    main #travelers .travelers-item {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 25px !important;
+    }
+    main #travelers .travelers-item .img {
+        width: 100%;
+        order: 1;
+        height: auto !important;
+        padding: 0 !important;
+        max-height: 200px;
+        overflow: hidden;
+    }
+    main #travelers .travelers-item .review {
+        width: 100%;
+        order: 2;
+        height: auto !important;
+    }
+    main #travelers .travelers-item .review .position {
+        position: relative;
+    }
+    main #header h2 {
+        font-size: 38px;
+    }
+    header {
+        height: 740px;
+        padding-bottom: 100px;
+    }
+    header .topline {
+        margin-bottom: 30px;
+    }
+    header .content .hash {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+    header .content .descript h1 {
+        font-size: 24px;
+        line-height: 1.4;
+    }
+    header .content .descript h1 span {
+        line-height: 1.5;
+        margin-top: 25px;
+        font-size: 15px;
+    }
+    header .topline .logo {
+        text-align: center;
+    }
+    header .topline .callback {
+        width: 100%;
+        display: inline-block;
+    }
+    header .topline .callback p {
+        float: left;
+        width: 100%;
+        text-align: center;
+        line-height: 2;
+        font-size: 28px;
+        background: none;
+        font-family: osl;
+    }
+    header .topline .callback a {
+        display: none;
+    }
+    header .content a.more:before {
+        display: none;
+    }
+    main #header {
+        padding: 0 0 10px 0;
+    }
+    main #header h2 {
+        font-size: 22px;
+    }
+    main #header h2 + p {
+        font-size: 16px;
+        padding: 0;
+    }
+    main #header a {}
+    main #travelers .travelers-item .review:before {
+        content: '';
+        display: none;
+    }
+    main #travelers .travelers-item .review:after {
+        content: '';
+        display: none;
+    }
+    main #more .more-items,
+    main #more .more-items img {
+        width: 100%;
+    }
+    main #travelers .travelers-item .review .text p {
+        font-size: 15px;
+    }
+    main #travelers .travelers-item .review .text p:before {
+        display: none;
+    }
+    main #travelers .btn-next {
+        padding: 0 15px;
+        width: 100%;
+    }
+    main #travelers .btn-next img {
+        display: none;
+    }
+    main #travelers .btn-next span {
+        line-height: 1;
+        font-size: 14px;
+        font-family: osr;
+    }
+    main #quote {
+        padding-top: 0;
+        margin-top: 0;
+    }
+    main #quote p {
+        padding: 0;
+    }
+    main #quote p:before {
+        position: relative;
+        width: 100%;
+        margin-bottom: 21px;
+        top: 0;
+        left: 0;
+        background-position: center;
+        background-size: contain;
+        background-position-y: bottom;
+    }
+    main #soon {
+        padding: 0 0 0px !important;
+        background-size: contain !important;
+        background-position: center 19% !important;
+    }
+    main #soon .bg {
+        margin: 0;
+        padding: 0 15px;
+    }
+    main #more {
+        padding-bottom: 80px;
+        padding-top: 40px;
+    }
+    main #soon h2 {
+        font-size: 30px;
+        line-height: 1.3;
+        margin-bottom: 50px;
+    }
+    main #soon h2 + p {
+        font-size: 22px;
+        margin-bottom: 180px;
+        padding-top: 20px;
+    }
+    footer {
+        overflow: hidden;
+        background-size: auto 320px;
+    }
+    .footer-socio {
+        text-align: center;
+    }
+    .footer-socio div {
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
+    .footer-bottom,
+    .footer-bottom div {
+        margin-top: 5px;
+        text-align: center !important;
+    }
+    footer > .top {
+        height: auto;
+        padding: 0 0 80px !important;
+        background: #fff
+    }
+    footer h2 {
+        font-size: 26px;
+        margin-top: 50px;
+        text-align: center;
+        margin: 50px auto 0;
+    }
+    footer p {
+        text-align: center !important;
+        line-height: 1.3;
+        margin: 15px 0;
+    }
+    footer form {
+        text-align: center;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    footer .bottom-line img {
+        max-width: 100%;
+    }
+    main #price h2 {
+        font-size: 30px;
+        line-height: 1.3;
+    }
+    footer .content {
+        height: auto;
+    }
+    footer form span {
+        font-size: 14px;
+    }
+    footer form label {
+        margin-bottom: 10px;
+    }
+    footer form label span {
+        display: none;
+    }
+    footer form label input {
+        height: 48px;
+        font-size: 13px;
+        font-size: 16px;
+    }
+    footer form label textarea {
+        height: 140px;
+        font-size: 16px;
+    }
+    footer form label::-webkit-input-placeholder {
+        color: #000;
+    }
+    footer form label::-moz-placeholder {
+        color: #000;
+    }
+    footer form label::-ms-input-placeholder {
+        color: #000;
+    }
+    .onchange::-webkit-input-placeholder {
+        color: #bbb;
+    }
+    .onchange::-moz-placeholder {
+        color: #bbb;
+    }
+    .onchange::-ms-input-placeholder {
+        color: #bbb;
+    }
+    footer .bottom-line {
+        height: auto;
+    }
+    footer .bottom-line p {
+        margin: 20px 0 10px;
+        font-size: 15px;
+        font-family: osr;
+        padding-left: 0;
+        text-align: center;
+    }
+    footer .bottom-line .phone {
+        text-align: center;
+    }
+    footer .bottom-line .phone img {
+        display: none;
+    }
+    footer .bottom-line .phone strong {
+        font-size: 24px;
+        font-family: osr;
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+        margin: 0;
+    }
+    footer .bottom-line .phone a {
+        color: #20c2f3;
+        font-size: 17px;
+        font-family: oss;
+        margin: 10px 0 40px;
+        display: inline-block;
+    }
+    footer .flex {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        flex-direction: column;
+    }
+    footer .flex div.ord {
+        order: 2;
+        text-align: center;
+    }
+    footer .flex div {
+        order: 1;
+    }
+    main #insert h3 {
+        margin-bottom: 40px;
+        margin-top: 0;
+        text-align: center;
+    }
+    main #insert .block {
+        margin-bottom: 50px;
+    }
+    main #soon .imaged {
+        text-align: center;
+    }
+}
+
+@media (max-width: 992px) {
+    .list-travels-body-titleimg {
+        max-height: 450px;
+    }
+    .list-travels-body-title span {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .list-travels-body-title {
+        font-size: 18px;
+    }
+    .list-travels-body-text h3 {
+        font-size: 22px;
+    }
+    main #insert h3 {
+        font-size: 22px;
+    }
+    main #more h3 {
+        font-size: 22px;
+    }
+    .list-travels-body-text-footer span {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+    footer > .top {
+        background: #fff;
+    }
+    footer h2,
+    footer p,
+    footer form {
+        margin: 0 auto;
+        text-align: center !important;
+    }
+    main #steps .step6 .bg {
+        display: none;
+    }
+    main #steps .step6 .grey {
+        left: 0 !important;
+    }
+    main #steps .step6 .grey .text {
+        max-width: 100% !important;
+        padding: 200px 85px !important;
+    }
+    main #quote p {
+        padding-left: 290px;
+        padding-top: 0;
+    }
+    main #quote p:before {
+        width: 350px;
+        height: 350px;
+        background-size: contain;
+        top: 60px;
+    }
+    header .content .hash img {
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .w-page-screen-top {
+        padding-top: 65px;
+        padding-bottom: 140px;
+    }
+    .w-page-screen-bottom {
+        padding-top: 30px;
+        padding-bottom: 50px;
+        margin-bottom: 50px;
+    }
+    .w-page-screen-top-title {
+        font-size: 36px;
+        line-height: 40px;
+        margin-bottom: 70px;
+    }
+    .w-page-screen-top-img:after {
+        left: -20px;
+        top: -20px;
+    }
+    .w-page-screen-top-img:before {
+        right: -25px;
+        bottom: -55px;
+    }
+    .w-page-screen-top-text-title,
+    .w-page-screen-bottom-text-title {
+        font-size: 22px;
+        line-height: 26px;
+        margin-bottom: 15px;
+    }
+    .w-page-screen-top-text .btn-primary {
+        margin-top: 5px;
+    }
+    .w-page-screen-bottom:after {
+        width: 80%;
+    }
+    .w-page-screen-bottom {
+        margin-bottom: 90px;
+    }
+    main #header {
+        padding-bottom: 10px;
+    }
+}
+
+@media (max-width: 1199px) {
+    .w-page-screen-top-title {
+        font-size: 30px;
+        line-height: 34px;
+        margin-bottom: 40px;
+    }
+    .w-page-screen-top-text-title,
+    .w-page-screen-bottom-text-title {
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 15px;
+    }
+    .w-page-screen-top-text,
+    .w-page-screen-bottom-text {
+        font-size: 15px;
+        line-height: 20px;
+    }
+    .w-page-screen-bottom {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 991px) {
+    .w-page-screen-top-img:after {
+        width: 130px;
+        height: 160px;
+    }
+    .w-page-screen-top-img:before {
+        width: 200px;
+        height: 200px;
+    }
+    .w-page-screen-top-title {
+        font-size: 24px;
+        line-height: 28px;
+    }
+    .w-page-screen-bottom {
+        margin-bottom: 0;
+    }
+    main #travelers .travelers-item .img {
+        margin-bottom: 15px;
+    }
+    main #travelers .travelers-item {
+        overflow: inherit;
+        margin-bottom: 80px;
+    }
+    main #travelers .travelers-item .rev3:before,
+    main #travelers .travelers-item .rev4:after {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .w-page-screen-top {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .w-page-screen-top-img {
+        width: 190px;
+        margin: 0 auto 45px auto;
+    }
+    .w-page-screen-top-img:before {
+        width: 180px;
+        bottom: -25px;
+    }
+    .w-page-screen-top-title {
+        font-size: 20px;
+        line-height: 24px;
+    }
+    .w-page-screen-top-text,
+    .w-page-screen-bottom-text {
+        text-align: center;
+    }
+    .w-page-screen-top-text-title,
+    .w-page-screen-bottom-text-title {
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }
+    .w-page-screen-bottom {
+        padding-top: 0;
+        padding-bottom: 20px;
+        margin-bottom: 0;
+    }
+    .w-page-screen-bottom:after {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 992px) {    
+    footer h2 {
+        font-size: 30px !important;
+    }
+}
+@media (max-width: 1440px) {
+}
+
+@media (max-width: 1770px) and (min-width: 1240px) {
+    main #steps {
+        counter-reset: num;
+        padding-top: 0px;
+        overflow: hidden;
+        margin-bottom: 75px;
+        display: inline-block;
+        width: 100%;
+    }
+    /*main #steps .container-fluid {
+        padding: 0;
+    }*/
+    main #steps .text {}
+    main #steps .text p:after {
+        content: counter(num) '';
+        counter-increment: num;
+        position: absolute;
+        font-size: 9em;
+        line-height: 1;
+        color: #e8e6e6;
+        font-family: osr;
+        top: -175px;
+        left: -10px;
+        z-index: 1;
+    }
+    main #steps h2 {
+        font-size: 48px;
+        font-family: osb;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 220px;
+        color: #000;
+        position: relative;
+    }
+    main #steps h2:before {
+        content: '';
+        width: 2px;
+        height: 140px;
+        background: #30beef;
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 165px;
+        margin-left: -1px;
+        z-index: 2;
+    }
+    main #steps [class*="step"] {
+        display: inline-block;
+        width: 100%;
+        /*margin: 0;*/
+        float: left;
+        position: relative;
+    }
+    main #steps .step1 .grey {
+        background: #f2f2f2;
+        padding: 140px 0 415px;
+        height: 900px;
+    }
+    main #steps .step1 .white {
+        position: relative;
+        height: 900px;
+        padding-right: 0;
+    }
+    main #steps .step1 .text {
+        float: right;
+        max-width: 750px;
+        width: 100%;
+        background: #fff;
+        height: 440px;
+        padding: 75px 320px 0 90px;
+    }
+    main #steps .step1 .text p {
+        position: relative;
+        font-size: 26px;
+        line-height: 1.4;
+        font-family: osr;
+        color: #000;
+        z-index: 2;
+    }
+    main #steps .step1 .text p span {
+        position: relative;
+        z-index: 2;
+    }
+    main #steps .step1 .bg {
+        position: absolute;
+        right: 0;
+        top: 180px;
+        box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.3);
+        width: 800px;
+    }
+    main #steps .step1 .ic {
+        position: absolute;
+        bottom: 120px;
+        left: 50%;
+        margin-left: -49px;
+    }
+    main #steps .step2 {
+        height: 695px;
+        z-index: 2;
+    }
+    main #steps .step2 .white {
+        padding: 0;
+        position: relative;
+        z-index: 3;
+        height: 650px;
+        margin-right: -5px;
+    }
+    main #steps .step2 .white:before {
+        content: '';
+        width: 2px;
+        height: 400px;
+        background: #30beef;
+        display: block;
+        position: absolute;
+        left: 40%;
+        bottom: -100px;
+        margin-left: -1px;
+        z-index: 0;
+    }
+    main #steps .step2 .grey {
+        padding: 0;
+        height: 650px;
+        position: relative;
+        background: #fff;
+    }
+    main #steps .step2 .bg {
+        position: absolute;
+        top: -110px;
+        left: 0;
+        box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.3);
+        width: 100%;
+    }
+    main #steps .step2 .bg2 {
+        position: absolute;
+        top: 250px;
+        right: -60px;
+        box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.3);
+        z-index: 3;
+        width: 280px;
+    }
+    main #steps .step2 .text {
+        padding: 200px 0 0 170px;
+        width: 100%;
+        max-width: 600px;
+        height: 100%;
+        position: relative;
+        z-index: 2;
+        background: #fff;
+    }
+    main #steps .step2 .grey:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 905px;
+        left: 5px;
+        top: 0;
+        box-shadow: 20px 0 25px 0 rgba(0, 0, 0, 0.3);
+        z-index: -1;
+    }
+    main #steps .step2 .text p span {
+        position: relative;
+        z-index: 2;
+    }
+    main #steps .step2 .text p {
+        position: relative;
+        font-size: 26px;
+        line-height: 1.4;
+        font-family: osr;
+        color: #000;
+        z-index: 2;
+    }
+    main #steps .step3 {
+        height: 460px;
+    }
+    main #steps .step3 .grey {
+        height: 640px;
+    }
+    main #steps .step3 .white {
+        position: relative;
+        padding: 0;
+    }
+    main #steps .step3 .text {
+        margin-top: 90px;
+        width: 100%;
+        max-width: 470px;
+        float: right;
+        margin-right: 51px;
+    }
+    main #steps .text p {
+        font-size: 20px !important;
+    }
+    main #steps .step3 .text p span {
+        position: relative;
+        z-index: 2;
+    }
+    main #steps .step3 .bg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        width: 100%;
+    }
+    main #steps .step3 .ic {
+        position: absolute;
+        z-index: 2;
+        top: 60px;
+        left: -60px;
+    }
+    main #steps .step4 {}
+    main #steps .step4 .grey {
+        background: #f2f2f2;
+        height: 770px;
+        margin-top: -50px;
+        padding: 300px 0 0 280px;
+    }
+    main #steps .step4 .white {
+        position: relative;
+    }
+    main #steps .step4 .text {
+        width: 100%;
+        max-width: 460px;
+    }
+    main #steps .step4 .text p {
+        position: relative;
+        font-size: 26px;
+        line-height: 1.4;
+        font-family: osr;
+        color: #000;
+        z-index: 2;
+    }
+    main #steps .step4 .text p span {
+        position: relative;
+        z-index: 2;
+    }
+    main #steps .step4 .bg {
+        position: absolute;
+        top: 100px;
+        right: -120px;
+        z-index: 2;
+        box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.3);
+    }
+    main #steps .step4 .ic {
+        position: absolute;
+        top: 160px;
+        right: -120%;
+        z-index: 99;
+    }
+    main #steps .step5 {
+        height: 590px;
+        position: relative;
+        z-index: 2;
+    }
+    main #steps .step5 .grey {
+        height: 520px;
+    }
+    main #steps .step5 .white {
+        position: relative;
+        padding: 0;
+    }
+    main #steps .step5 .text {
+        width: 100%;
+        max-width: 550px;
+        float: right;
+        margin-right: 90px;
+        padding-top: 220px;
+    }
+    main #steps .step5 .text p {
+        position: relative;
+        font-size: 26px;
+        line-height: 1.4;
+        font-family: osr;
+        color: #000;
+        z-index: 2;
+    }
+    main #steps .step5 .text p span {
+        position: relative;
+        z-index: 2;
+    }
+    main #steps .step5 .bg {
+        box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.3);
+        position: absolute;
+        top: -75px;
+        left: 0;
+    }
+    main #steps .step5 .ic {
+        position: absolute;
+        top: 50%;
+        left: 15%;
+        display: none;
+    }
+    main #steps .step6 {
+        height: 720px;
+        margin-top: -80px;
+    }
+    main #steps .step6 .container {
+        height: 100%;
+    }
+    main #steps .step6 .grey {
+        background: #f2f2f2;
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        padding: 0;
+        width: 100%;
+        /*min-width: 1290px;*/
+    }
+    main #steps .step6 .bg {
+        position: absolute;
+        top: 130px;
+        left: 0;
+        z-index: 2;
+        box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.3);
+        width: 670px;
+    }
+    main #steps .step6 .grey .text {
+        width: 100%;
+        max-width: 540px;
+        float: right;
+        padding-right: 120px;
+        padding-top: 230px;
+        position: relative;
+        z-index: 3;
+    }
+    main #steps .step6 .grey .text p {
+        font-size: 26px;
+        line-height: 1.4;
+        font-family: osr;
+        color: #000;
+        position: relative;
+    }
+    main #steps .step6 .grey .text p span {
+        position: relative;
+        z-index: 2;
+    }
+    main #steps .step6 .grey a {
+        position: absolute;
+        bottom: 60px;
+        left: 50%;
+        margin-left: -93px;
+    }
+}
+
+@media (max-width: 992px) and (min-width: 768px) {
+    main #steps .step1 .text {
+        padding: 65px 80px 0 35px !important;
+    }
+    main #steps .step1 .bg {
+        width: 400px !important;
+    }
+    main #steps .step1 .text img {
+        top: 265px !important;
+        left: 85px !important;
+        width: 50px;
+    }
+    main #steps .step3 .text {
+        max-width: 280px !important;
+    }
+    main #steps .text h4 {
+        margin-bottom: 25px !important;
+    }
+    main #steps .step3 .text img {
+        top: 240px !important;
+        left: -25px !important;
+    }
+    main #steps .step4 .grey {
+        padding: 150px 35px 0 160px !important;
+    }
+    main #steps .text h4 {
+        font-size: 20px !important;
+    }
+    main #steps .text p:after {
+        top: -135px !important;
+    }
+    main #steps .step5 .text {
+        max-width: 337px !important;
+    }
+    main #steps .step6 .grey .text {
+        padding: 100px 35px 50px 35px !important;
+    }
+    main #steps .step6 {
+        height: 430px !important;
+    }
+    #travels h1 {
+        font-size: 38px !important;
+    }
+    #travels h1 + p {
+        font-size: 18px !important;
+    }
+    .list-travels-title span {
+        font-size: 18px !important;
+        line-height: 28px !important;
+    }
+    .list-travels-title {
+        font-size: 14px !important;
+    }
+    footer .content,
+    footer > .top {
+        height: auto !important;
+        padding-bottom: 50px;
+    }
+    main #quote {
+        margin: 0 0 35px 0 !important;
+        padding-top: 0 !important;
+    }
+}
+@media (max-width: 1441px) and (min-width: 992px) {
+    main #steps .step1 .text img {
+        top: 273px !important;
+        left: 180px !important;
+        width: 63px !important;
+    }
+    main #steps .step3 .text img {
+        top: 220px !important;
+        left: -20px !important;
+    }
+    main #steps .step4 .grey {
+        padding: 170px 35px 0 160px !important;
+    }
+    main #steps .step6 .grey .text {
+        padding: 200px 35px 0 35px !important;
+    }
+    main #steps .text p:after {
+        top: -144px !important;
+        left: 0 !important;
+    }
+    main #steps .step1 .bg {
+        width: 480px !important;
+    }
+}
+@media (max-width: 1239px) and (min-width: 1200px) {
+    main #steps .step6 .grey .text {
+        max-width: 500px !important;
+        padding-right: 35px !important;
+    }
+}
+@media (max-width: 1239px) and (min-width: 768px) {
+    footer > .top {
+        background-size: cover;
+        background-position: 40% top;
+    }
+    main #travelers .travelers-item .rev3:after {
+        display: none;
+    }
+    main #travelers .travelers-item .review .text p:before {
+        width: 28px;
+        height: 28px;
+        background-size: cover;
+        left: 0;
+        position: absolute;
+    }
+    main #header p {
+        font-size: 22px;
+    }
+    main #travelers .travelers-item .review .text p {
+        font-size: 14px;
+        padding-left: 35px;
+    }
+    main #soon {
+        overflow: hidden
+    }
+    footer h2 {
+        font-size: 36px
+    }
+    main #steps {
+        counter-reset: num;
+        padding-top: 10px;
+        overflow: hidden;
+        margin-bottom: 75px;
+        display: inline-block;
+        width: 100%;
+    }
+    main #steps .container-fluid {
+        padding: 0;
+    }
+    main #header h2 {
+        font-size: 26px
+    }
+    main #steps .text {}
+    main #steps .text p:after {
+        content: counter(num) '';
+        counter-increment: num;
+        position: absolute;
+        font-size: 9em;
+        line-height: 1;
+        color: #e8e6e6;
+        font-family: osr;
+        top: -175px;
+        left: -20px;
+        z-index: 1;
+    }
+    main #steps h2 {
+        font-size: 48px;
+        font-family: osb;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 140px;
+        color: #000;
+        position: relative;
+    }
+    main #steps h2:before {
+        content: '';
+        width: 2px;
+        height: 90px;
+        background: #30beef;
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 150px;
+        margin-left: -1px;
+        z-index: 2;
+    }
+    main #steps [class*="step"] {
+        display: inline-block;
+        width: 100%;
+        margin: 0;
+        float: left;
+        position: relative;
+    }
+    main #steps .step1 .grey {
+        background: #f2f2f2;
+        padding: 140px 0 275px;
+        height: 750px;
+    }
+    main #steps .step1 .white {
+        position: relative;
+        height: 750px;
+        padding-right: 0;
+    }
+    main #steps .step1 .text {
+        float: right;
+        max-width: 750px;
+        width: 100%;
+        background: #fff;
+        height: 330px;
+        padding: 65px 120px 0 170px;
+    }
+    main #steps .step1 .text p {
+        position: relative;
+        font-size: 26px;
+        line-height: 1.4;
+        font-family: osr;
+        color: #000;
+        z-index: 2;
+    }
+    main #steps .step1 .text p span {
+        position: relative;
+        z-index: 2;
+    }
+    main #steps .step1 .bg {
+        position: absolute;
+        right: 0;
+        top: 180px;
+        box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.3);
+        width: 530px;
+    }
+    main #steps .step1 .ic {
+        position: absolute;
+        bottom: 120px;
+        left: 50%;
+        margin-left: -49px;
+    }
+    main #steps .step2 {
+        height: 470px;
+        z-index: 2;
+    }
+    main #steps .step2 .white {
+        padding: 0;
+        position: relative;
+        z-index: 3;
+        height: 470px;
+        margin-right: -5px;
+    }
+    main #steps .step2 .white:before {
+        content: '';
+        width: 2px;
+        height: 300px;
+        background: #30beef;
+        display: block;
+        position: absolute;
+        left: 40%;
+        bottom: 150px;
+        margin-left: -1px;
+        z-index: 0;
+    }
+    main #steps .step2 .grey {
+        padding: 0;
+        height: 650px;
+        position: relative;
+        background: #fff;
+    }
+    main #steps .step2 .bg {
+        position: absolute;
+        top: -110px;
+        left: 0;
+        box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.3);
+        width: 100%;
+    }
+    main #steps .step2 .bg2 {
+        position: absolute;
+        top: 50px;
+        right: -60px;
+        box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.3);
+        z-index: 3;
+        width: 230px;
+    }
+    main #steps .step2 .text {
+        padding: 120px 50px 0 110px;
+        width: 100%;
+        max-width: 600px;
+        height: 100%;
+        position: relative;
+        z-index: 2;
+        background: #fff;
+    }
+    main #steps .step2 .grey:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 490px;
+        left: 5px;
+        top: 0;
+        box-shadow: 20px 0 25px 0 rgba(0, 0, 0, 0.3);
+        z-index: -1;
+    }
+    main #steps .step2 .text p span {
+        position: relative;
+        z-index: 2;
+    }
+    main #steps .step2 .text p {
+        position: relative;
+        line-height: 1.4;
+        font-family: osr;
+        color: #000;
+        z-index: 2;
+    }
+    main #steps .step3 {
+        height: 350px;
+    }
+    main #steps .step3 .grey {
+        height: 350px;
+    }
+    main #steps .step3 .white {
+        position: relative;
+        padding: 0;
+    }
+    main #steps .step3 .text {
+        margin-top: 40px;
+        width: 100%;
+        max-width: 380px;
+        float: right;
+        margin-right: 50px;
+    }
+    main #steps .text p {
+        font-size: 18px !important;
+    }
+    main #steps .step3 .text p span {
+        position: relative;
+        z-index: 2;
+    }
+    main #steps .step3 .bg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        width: 100%;
+    }
+    main #steps .step3 .ic {
+        position: absolute;
+        z-index: 2;
+        top: 30px;
+        left: -30px;
+        width: 60px;
+    }
+    main #steps .step4 {}
+    main #steps .step4 .grey {
+        background: #f2f2f2;
+        height: 600px;
+        margin-top: -50px;
+        padding: 190px 90px 0 170px;
+    }
+    main #steps .step4 .white {
+        position: relative;
+    }
+    main #steps .step4 .text {
+        width: 100%;
+        max-width: 460px;
+    }
+    main #steps .text h4 {
+        font-size: 24px
+    }
+    main #steps .text p {
+        font-size: 16px !important
+    }
+    main #steps .step4 .text p {
+        position: relative;
+        font-size: 26px;
+        line-height: 1.4;
+        font-family: osr;
+        color: #000;
+        z-index: 2;
+    }
+    main #steps .step4 .text p span {
+        position: relative;
+        z-index: 2;
+    }
+    main #steps .step4 .bg {
+        position: absolute;
+        top: 70px;
+        right: -120px;
+        z-index: 2;
+        box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.3);
+        width: 500px;
+    }
+    main #steps .step4 .ic {
+        display: none;
+    }
+    main #steps .step5 {
+        height: 390px;
+        position: relative;
+        z-index: 2;
+    }
+    main #steps .step5 .grey {
+        height: 340px;
+    }
+    main #steps .step5 .white {
+        position: relative;
+        padding: 0;
+    }
+    main #steps .step5 .text {
+        width: 100%;
+        max-width: 400px;
+        float: right;
+        margin-right: 60px;
+        padding-top: 40px;
+    }
+    main #steps .step5 .text p {
+        position: relative;
+        font-size: 26px;
+        line-height: 1.4;
+        font-family: osr;
+        color: #000;
+        z-index: 2;
+    }
+    main #steps .step5 .text p span {
+        position: relative;
+        z-index: 2;
+    }
+    main #steps .step5 .bg {
+        box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.3);
+        position: absolute;
+        top: -75px;
+        left: 0;
+        width: 100%;
+    }
+    main #steps .step5 .ic {
+        position: absolute;
+        top: 50%;
+        left: 15%;
+        display: none;
+    }
+    main #steps .step6 {
+        height: 630px;
+        margin-top: -80px;
+    }
+    main #steps .step6 .container {
+        height: 100%;
+    }
+    main #steps .step6 .grey {
+        background: #f2f2f2;
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        padding: 0;
+        width: 100%;
+        min-width: 100%;
+        left: -30px;
+    }
+    main #steps .step6 .bg {
+        position: absolute;
+        top: 130px;
+        left: 0;
+        z-index: 2;
+        box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.3);
+        width: 540px;
+    }
+    main #steps .step6 .grey .text {
+        width: 100%;
+        max-width: 400px;
+        float: right;
+        padding-right: 70px;
+        padding-top: 240px;
+        position: relative;
+        z-index: 3;
+    }
+    main #steps .step6 .grey .text p {
+        font-size: 26px;
+        line-height: 1.4;
+        font-family: osr;
+        color: #000;
+        position: relative;
+    }
+    main #steps .step6 .grey .text p span {
+        position: relative;
+        z-index: 2;
+    }
+    main #steps .step6 .grey a {
+        position: absolute;
+        bottom: 60px;
+        left: 50%;
+        margin-left: -93px;
+    }
+}

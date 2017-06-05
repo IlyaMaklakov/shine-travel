@@ -25,7 +25,12 @@ namespace ShineMvc.Controllers
         public ActionResult Booking(ContactUsModel model)
         {
             var result = MailService.SendBookingMessage(model.Email, model.Name, model.Phone);
-            return Json(result);
+            return RedirectToAction("ThankYou");
+        }
+
+        public ActionResult ThankYou()
+        {
+            return View();
         }
     }
 }

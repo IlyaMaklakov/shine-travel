@@ -179,6 +179,9 @@
     <Content Include="assets\img\fav\favicon-16x16.png" />
     <Content Include="assets\img\fav\favicon-32x32.png" />
     <Content Include="assets\img\fav\favicon-96x96.png" />
+    <Content Include="assets\img\ic_mail.png" />
+    <Content Include="assets\img\ic_name.png" />
+    <Content Include="assets\img\ic_phone.png" />
     <Content Include="assets\img\input-div.png" />
     <Content Include="assets\img\lock.png" />
     <Content Include="assets\img\logo-top.png" />
@@ -188,6 +191,7 @@
     <Content Include="assets\img\pointer.png" />
     <Content Include="assets\img\Preloader_2.gif" />
     <Content Include="assets\img\rus.png" />
+    <Content Include="assets\img\thanks.jpg" />
     <Content Include="assets\img\thumbnails\1_locked.jpg" />
     <Content Include="assets\img\thumbnails\1_unlocked.jpg" />
     <Content Include="assets\img\thumbnails\2_locked.jpg" />
@@ -254,6 +258,7 @@
     </Content>
     <Content Include="assets\vendors\modernizr-2.6.2.js" />
     <Content Include="assets\vendors\respond.js" />
+    <Content Include="Views\ContactUs\ThankYou.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -266,9 +271,7 @@
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\ContactUs\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
